@@ -1,0 +1,37 @@
+---
+site: "bookdown::bookdown_site"
+output:  
+  bookdown::gitbook: 
+    config:
+      toc:
+        collapse: subsection
+        scroll_highlight: yes
+        before: null
+        after: null
+      toolbar:
+        position: fixed
+      edit : null  # Change to Github URL for folks to edit. Should have %s to substitute each Rmd filename for each page.
+      download: ["MDL_UserGuide_and_ReferenceManual.pdf", "MDL_UserGuide_and_ReferenceManual.epub"]
+      search: yes
+      fontsettings:
+        theme: white
+        family: sans
+        size: 2
+documentclass: book
+bibliography: "references.bib"
+biblio-style: "apalike"
+link-citations: true
+---
+
+#  MDL User Guide and Reference Manual  {-}
+
+```{r ddmorelogo, out.width='70%', echo=F}
+knitr::include_graphics("images/ddmore_logo4.jpg")
+```
+
+**Author: MDL Development Team**
+  
+  
+**MDL Version 1.0**
+
+`r Sys.Date()`

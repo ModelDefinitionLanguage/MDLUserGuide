@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="the-task-properties-object.html">
+<link rel="next" href="the-design-object.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>MDL User Guide and Reference Manual</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#mdl-development-team"><i class="fa fa-check"></i>MDL Development Team</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#mdl-contributors"><i class="fa fa-check"></i>MDL Contributors</a></li>
+<li class="chapter" data-level="" data-path="preface.html"><a href="preface.html#further-information"><i class="fa fa-check"></i>Further Information:</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#why-write-a-new-language"><i class="fa fa-check"></i><b>1.1</b> Why write a new language?</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#integrated-language-standards"><i class="fa fa-check"></i><b>1.2</b> Integrated language standards</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#mdl-in-use"><i class="fa fa-check"></i><b>1.3</b> MDL in use</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#mdl-components-and-structure"><i class="fa fa-check"></i><b>1.4</b> MDL components and structure</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#independence-of-mdl-objects"><i class="fa fa-check"></i><b>1.4.1</b> Independence of MDL objects</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#task-execution-with-the-ddmore-r-package"><i class="fa fa-check"></i><b>1.5</b> Task Execution with the ddmore R package</a></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#the-mdl-integrated-development-environment"><i class="fa fa-check"></i><b>1.6</b> The MDL Integrated Development Environment</a></li>
+<li class="chapter" data-level="1.7" data-path="introduction.html"><a href="introduction.html#on-interoperability"><i class="fa fa-check"></i><b>1.7</b> On interoperability</a></li>
+<li class="chapter" data-level="1.8" data-path="introduction.html"><a href="introduction.html#evolution-of-mdl"><i class="fa fa-check"></i><b>1.8</b> Evolution of MDL</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-object.html"><a href="data-object.html"><i class="fa fa-check"></i><b>2</b> Data Object</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-object.html"><a href="data-object.html#subsetting-data-for-analysis"><i class="fa fa-check"></i><b>2.1</b> Subsetting data for analysis</a></li>
+<li class="chapter" data-level="2.2" data-path="data-object.html"><a href="data-object.html#data_input_variables"><i class="fa fa-check"></i><b>2.2</b> <code>DATA_INPUT_VARIABLES</code></a><ul>
+<li class="chapter" data-level="2.2.1" data-path="data-object.html"><a href="data-object.html#defining-dose-amount"><i class="fa fa-check"></i><b>2.2.1</b> Defining dose amount</a></li>
+<li class="chapter" data-level="2.2.2" data-path="data-object.html"><a href="data-object.html#defining-the-independent-variable"><i class="fa fa-check"></i><b>2.2.2</b> Defining the independent variable</a></li>
+<li class="chapter" data-level="2.2.3" data-path="data-object.html"><a href="data-object.html#defining-the-dependent-variable"><i class="fa fa-check"></i><b>2.2.3</b> Defining the dependent variable</a></li>
+<li class="chapter" data-level="2.2.4" data-path="data-object.html"><a href="data-object.html#mapping-data-variables-to-model-variability-levels"><i class="fa fa-check"></i><b>2.2.4</b> Mapping data variables to model variability levels</a></li>
+<li class="chapter" data-level="2.2.5" data-path="data-object.html"><a href="data-object.html#spandefining-covariates"><i class="fa fa-check"></i><b>2.2.5</b> span&gt;Defining covariates</a></li>
+<li class="chapter" data-level="2.2.6" data-path="data-object.html"><a href="data-object.html#defining-model-inputs-or-time-varying-covariates"><i class="fa fa-check"></i><b>2.2.6</b> Defining model inputs or time-varying covariates</a></li>
+<li class="chapter" data-level="2.2.7" data-path="data-object.html"><a href="data-object.html#assignment-to-a-single-variable-using-variable-name"><i class="fa fa-check"></i><b>2.2.7</b> Assignment to a single variable using <code>variable = &lt;NAME&gt;</code></a></li>
+<li class="chapter" data-level="2.2.8" data-path="data-object.html"><a href="data-object.html#assignment-to-multiple-variables-using-define"><i class="fa fa-check"></i><b>2.2.8</b> Assignment to multiple variables using <code>“define = &lt; … &gt;”</code></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-object.html"><a href="data-object.html#source"><i class="fa fa-check"></i><b>2.3</b> <code>SOURCE</code></a></li>
+<li class="chapter" data-level="2.4" data-path="data-object.html"><a href="data-object.html#declared_variables"><i class="fa fa-check"></i><b>2.4</b> <code>DECLARED_VARIABLES</code></a></li>
+<li class="chapter" data-level="2.5" data-path="data-object.html"><a href="data-object.html#data_derived_variables"><i class="fa fa-check"></i><b>2.5</b> <code>DATA_DERIVED_VARIABLES</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="parameter-object.html"><a href="parameter-object.html"><i class="fa fa-check"></i><b>3</b> Parameter Object</a><ul>
+<li class="chapter" data-level="3.1" data-path="parameter-object.html"><a href="parameter-object.html#structural"><i class="fa fa-check"></i><b>3.1</b> <code>STRUCTURAL</code></a><ul>
+<li class="chapter" data-level="3.1.1" data-path="parameter-object.html"><a href="parameter-object.html#note-on-parameter-values"><i class="fa fa-check"></i><b>3.1.1</b> Note on parameter values</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="parameter-object.html"><a href="parameter-object.html#variability"><i class="fa fa-check"></i><b>3.2</b> <code>VARIABILITY</code></a><ul>
+<li class="chapter" data-level="3.2.1" data-path="parameter-object.html"><a href="parameter-object.html#parameter-naming"><i class="fa fa-check"></i><b>3.2.1</b> Parameter naming</a></li>
+<li class="chapter" data-level="3.2.2" data-path="parameter-object.html"><a href="parameter-object.html#covariances-and-correlations"><i class="fa fa-check"></i><b>3.2.2</b> Covariances and Correlations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="the-model-object.html"><a href="the-model-object.html"><i class="fa fa-check"></i><b>4</b> The Model Object</a><ul>
+<li class="chapter" data-level="4.1" data-path="the-model-object.html"><a href="the-model-object.html#on-interoperability-1"><i class="fa fa-check"></i><b>4.1</b> On interoperability</a></li>
+<li class="chapter" data-level="4.2" data-path="the-model-object.html"><a href="the-model-object.html#idv"><i class="fa fa-check"></i><b>4.2</b> <code>IDV</code></a></li>
+<li class="chapter" data-level="4.3" data-path="the-model-object.html"><a href="the-model-object.html#covariates"><i class="fa fa-check"></i><b>4.3</b> <code>COVARIATES</code></a></li>
+<li class="chapter" data-level="4.4" data-path="the-model-object.html"><a href="the-model-object.html#structural_parameters"><i class="fa fa-check"></i><b>4.4</b> <code>STRUCTURAL_PARAMETERS</code></a></li>
+<li class="chapter" data-level="4.5" data-path="the-model-object.html"><a href="the-model-object.html#variability_parameters"><i class="fa fa-check"></i><b>4.5</b> <code>VARIABILITY_PARAMETERS</code></a><ul>
+<li class="chapter" data-level="4.5.1" data-path="the-model-object.html"><a href="the-model-object.html#residual-unexplained-variability"><i class="fa fa-check"></i><b>4.5.1</b> Residual Unexplained Variability</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="the-model-object.html"><a href="the-model-object.html#variability_levels"><i class="fa fa-check"></i><b>4.6</b> <code>VARIABILITY_LEVELS</code></a></li>
+<li class="chapter" data-level="4.7" data-path="the-model-object.html"><a href="the-model-object.html#group_variables"><i class="fa fa-check"></i><b>4.7</b> <code>GROUP_VARIABLES</code></a><ul>
+<li class="chapter" data-level="4.7.1" data-path="the-model-object.html"><a href="the-model-object.html#defining-model-constants"><i class="fa fa-check"></i><b>4.7.1</b> Defining model constants</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="the-model-object.html"><a href="the-model-object.html#random_variable_definition"><i class="fa fa-check"></i><b>4.8</b> <code>RANDOM_VARIABLE_DEFINITION</code></a></li>
+<li class="chapter" data-level="4.9" data-path="the-model-object.html"><a href="the-model-object.html#individual_variables"><i class="fa fa-check"></i><b>4.9</b> <code>INDIVIDUAL_VARIABLES</code></a><ul>
+<li class="chapter" data-level="4.9.1" data-path="the-model-object.html"><a href="the-model-object.html#mixed-effect-model-with-linear-fixed-effects-and-normally-distributed"><i class="fa fa-check"></i><b>4.9.1</b> Mixed effect model with linear fixed effects and normally distributed</a></li>
+<li class="chapter" data-level="4.9.2" data-path="the-model-object.html"><a href="the-model-object.html#general-mixed-effect-model-with-gaussian-random-effects."><i class="fa fa-check"></i><b>4.9.2</b> General mixed effect model with Gaussian random effects.</a></li>
+<li class="chapter" data-level="4.9.3" data-path="the-model-object.html"><a href="the-model-object.html#mixed-effect-model-defined-by-equations"><i class="fa fa-check"></i><b>4.9.3</b> Mixed effect model defined by equations</a></li>
+<li class="chapter" data-level="4.9.4" data-path="the-model-object.html"><a href="the-model-object.html#individual_variables-without-inter-individual-variability"><i class="fa fa-check"></i><b>4.9.4</b> INDIVIDUAL_VARIABLES without inter-individual variability</a></li>
+<li class="chapter" data-level="4.9.5" data-path="the-model-object.html"><a href="the-model-object.html#individual_variables-where-the-variable-is-defined-in-the"><i class="fa fa-check"></i><b>4.9.5</b> <a href="the-model-object.html#individual_variables"><code>INDIVIDUAL_VARIABLES</code></a> where the variable is defined in the</a></li>
+<li class="chapter" data-level="4.9.6" data-path="the-model-object.html"><a href="the-model-object.html#conditional-assignment-of-individual_variables"><i class="fa fa-check"></i><b>4.9.6</b> Conditional assignment of <a href="the-model-object.html#individual_variables"><code>INDIVIDUAL_VARIABLES</code></a></a></li>
+<li class="chapter" data-level="4.9.7" data-path="the-model-object.html"><a href="the-model-object.html#individual_variables-definitions-in-practice."><i class="fa fa-check"></i><b>4.9.7</b> <a href="the-model-object.html#individual_variables"><code>INDIVIDUAL_VARIABLES</code></a> definitions in practice.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="the-model-object.html"><a href="the-model-object.html#model_prediction"><i class="fa fa-check"></i><b>4.10</b> <code>MODEL_PREDICTION</code></a><ul>
+<li class="chapter" data-level="4.10.1" data-path="the-model-object.html"><a href="the-model-object.html#deq"><i class="fa fa-check"></i><b>4.10.1</b> <code>DEQ</code></a></li>
+<li class="chapter" data-level="4.10.2" data-path="the-model-object.html"><a href="the-model-object.html#on-tlag-and-bioavailability"><i class="fa fa-check"></i><b>4.10.2</b> On Tlag and Bioavailability</a></li>
+<li class="chapter" data-level="4.10.3" data-path="the-model-object.html"><a href="the-model-object.html#compartment"><i class="fa fa-check"></i><b>4.10.3</b> <code>COMPARTMENT</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="the-model-object.html"><a href="the-model-object.html#combining-compartment-and-deq-blocks"><i class="fa fa-check"></i><b>4.11</b> Combining <a href="the-model-object.html#compartment"><code>COMPARTMENT</code></a> and <a href="the-model-object.html#deq"><code>DEQ</code></a> blocks</a></li>
+<li class="chapter" data-level="4.12" data-path="the-model-object.html"><a href="the-model-object.html#observation"><i class="fa fa-check"></i><b>4.12</b> <code>OBSERVATION</code></a><ul>
+<li class="chapter" data-level="4.12.1" data-path="the-model-object.html"><a href="the-model-object.html#continuous-outcomes"><i class="fa fa-check"></i><b>4.12.1</b> Continuous outcomes</a></li>
+<li class="chapter" data-level="4.12.2" data-path="the-model-object.html"><a href="the-model-object.html#discrete-data"><i class="fa fa-check"></i><b>4.12.2</b> Discrete data</a></li>
+<li class="chapter" data-level="4.12.3" data-path="the-model-object.html"><a href="the-model-object.html#time-to-event-data"><i class="fa fa-check"></i><b>4.12.3</b> Time to event data</a></li>
+</ul></li>
+<li class="chapter" data-level="4.13" data-path="the-model-object.html"><a href="the-model-object.html#functions"><i class="fa fa-check"></i><b>4.13</b> <code>FUNCTIONS</code></a></li>
+<li class="chapter" data-level="4.14" data-path="the-model-object.html"><a href="the-model-object.html#population_parameters"><i class="fa fa-check"></i><b>4.14</b> <code>POPULATION_PARAMETERS</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="the-task-properties-object.html"><a href="the-task-properties-object.html"><i class="fa fa-check"></i><b>5</b> The Task Properties Object</a><ul>
+<li class="chapter" data-level="5.1" data-path="the-task-properties-object.html"><a href="the-task-properties-object.html#intended-use-of-task-properties"><i class="fa fa-check"></i><b>5.1</b> Intended use of Task Properties</a></li>
+<li class="chapter" data-level="5.2" data-path="the-task-properties-object.html"><a href="the-task-properties-object.html#why-use-task-properties-for-settings-and-options-rather-than-arguments-of-functions-in-the-ddmore-r-package"><i class="fa fa-check"></i><b>5.2</b> Why use Task Properties for settings and options rather than arguments of functions in the ddmore R package?</a></li>
+<li class="chapter" data-level="5.3" data-path="the-task-properties-object.html"><a href="the-task-properties-object.html#how-are-task-properties-used-by-mdl-and-pharmml"><i class="fa fa-check"></i><b>5.3</b> How are Task Properties used by MDL and PharmML?</a></li>
+<li class="chapter" data-level="5.4" data-path="the-task-properties-object.html"><a href="the-task-properties-object.html#estimate"><i class="fa fa-check"></i><b>5.4</b> <code>ESTIMATE</code></a><ul>
+<li class="chapter" data-level="5.4.1" data-path="the-task-properties-object.html"><a href="the-task-properties-object.html#target_settings"><i class="fa fa-check"></i><b>5.4.1</b> <code>TARGET_SETTINGS</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="the-prior-object.html"><a href="the-prior-object.html"><i class="fa fa-check"></i><b>6</b> The Prior Object</a><ul>
+<li class="chapter" data-level="6.1" data-path="the-prior-object.html"><a href="the-prior-object.html#prior-distributions-vs-initial-values-vs-fixed-values"><i class="fa fa-check"></i><b>6.1</b> Prior distributions vs initial values vs fixed values</a></li>
+<li class="chapter" data-level="6.2" data-path="the-prior-object.html"><a href="the-prior-object.html#prior_parameters-block"><i class="fa fa-check"></i><b>6.2</b> <code>PRIOR_PARAMETERS</code> Block</a></li>
+<li class="chapter" data-level="6.3" data-path="the-prior-object.html"><a href="the-prior-object.html#prior_variable_definition"><i class="fa fa-check"></i><b>6.3</b> <code>PRIOR_VARIABLE_DEFINITION</code></a><ul>
+<li class="chapter" data-level="6.3.1" data-path="the-prior-object.html"><a href="the-prior-object.html#parametric-distributions-as-priors"><i class="fa fa-check"></i><b>6.3.1</b> Parametric distributions as priors</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="the-prior-object.html"><a href="the-prior-object.html#non-parametric-and-empirical-distributions-as-priors-inline-data."><i class="fa fa-check"></i><b>6.4</b> Non-parametric and empirical distributions as priors – inline data.</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="the-prior-object.html"><a href="the-prior-object.html#non-parametric-distribution-specification-with-inline-data."><i class="fa fa-check"></i><b>6.4.1</b> Non-parametric distribution specification with inline data.</a></li>
+<li class="chapter" data-level="6.4.2" data-path="the-prior-object.html"><a href="the-prior-object.html#empirical-distribution-specification-with-inline-data."><i class="fa fa-check"></i><b>6.4.2</b> Empirical distribution specification with inline data.</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="the-prior-object.html"><a href="the-prior-object.html#non_canonical_distribution"><i class="fa fa-check"></i><b>6.5</b> <code>NON_CANONICAL_DISTRIBUTION</code></a><ul>
+<li class="chapter" data-level="6.5.1" data-path="the-prior-object.html"><a href="the-prior-object.html#prior_source"><i class="fa fa-check"></i><b>6.5.1</b> <code>PRIOR_SOURCE</code></a></li>
+<li class="chapter" data-level="6.5.2" data-path="the-prior-object.html"><a href="the-prior-object.html#input_prior_data"><i class="fa fa-check"></i><b>6.5.2</b> <code>INPUT_PRIOR_DATA</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="the-design-object.html"><a href="the-design-object.html"><i class="fa fa-check"></i><b>7</b> The Design Object</a><ul>
+<li class="chapter" data-level="7.1" data-path="the-design-object.html"><a href="the-design-object.html#design-object-overview"><i class="fa fa-check"></i><b>7.1</b> Design Object overview</a></li>
+<li class="chapter" data-level="7.2" data-path="the-design-object.html"><a href="the-design-object.html#intervention"><i class="fa fa-check"></i><b>7.2</b> <code>INTERVENTION</code></a></li>
+<li class="chapter" data-level="7.3" data-path="the-design-object.html"><a href="the-design-object.html#sampling"><i class="fa fa-check"></i><b>7.3</b> <code>SAMPLING</code></a></li>
+<li class="chapter" data-level="7.4" data-path="the-design-object.html"><a href="the-design-object.html#population"><i class="fa fa-check"></i><b>7.4</b> <code>POPULATION</code></a></li>
+<li class="chapter" data-level="7.5" data-path="the-design-object.html"><a href="the-design-object.html#study_design"><i class="fa fa-check"></i><b>7.5</b> <code>STUDY_DESIGN</code></a></li>
+<li class="chapter" data-level="7.6" data-path="the-design-object.html"><a href="the-design-object.html#design_spaces"><i class="fa fa-check"></i><b>7.6</b> <code>DESIGN_SPACES</code></a></li>
+<li class="chapter" data-level="7.7" data-path="the-design-object.html"><a href="the-design-object.html#design_parameters"><i class="fa fa-check"></i><b>7.7</b> <code>DESIGN_PARAMETERS</code></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="the-mog-object.html"><a href="the-mog-object.html"><i class="fa fa-check"></i><b>8</b> The MOG Object</a><ul>
+<li class="chapter" data-level="8.1" data-path="the-mog-object.html"><a href="the-mog-object.html#info"><i class="fa fa-check"></i><b>8.1</b> <code>INFO</code></a></li>
+<li class="chapter" data-level="8.2" data-path="the-mog-object.html"><a href="the-mog-object.html#objects"><i class="fa fa-check"></i><b>8.2</b> <code>OBJECTS</code></a></li>
+<li class="chapter" data-level="8.3" data-path="the-mog-object.html"><a href="the-mog-object.html#mapping-of-variable-names-between-mdl-objects"><i class="fa fa-check"></i><b>8.3</b> Mapping of variable names between MDL Objects</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html"><i class="fa fa-check"></i><b>9</b> MDL Language Reference</a><ul>
+<li class="chapter" data-level="9.1" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#core-syntactic-elements"><i class="fa fa-check"></i><b>9.1</b> Core syntactic elements</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#keywords"><i class="fa fa-check"></i><b>9.1.1</b> Keywords</a></li>
+<li class="chapter" data-level="9.1.2" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#variable-names"><i class="fa fa-check"></i><b>9.1.2</b> Variable names</a></li>
+<li class="chapter" data-level="9.1.3" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#literals"><i class="fa fa-check"></i><b>9.1.3</b> Literals</a></li>
+<li class="chapter" data-level="9.1.4" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#expressions"><i class="fa fa-check"></i><b>9.1.4</b> Expressions</a></li>
+<li class="chapter" data-level="9.1.5" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#attributes-arguments-properties-and-values"><i class="fa fa-check"></i><b>9.1.5</b> Attributes, Arguments, Properties and Values</a></li>
+<li class="chapter" data-level="9.1.6" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#statements"><i class="fa fa-check"></i><b>9.1.6</b> Statements</a></li>
+<li class="chapter" data-level="9.1.7" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#random-variable-definitions"><i class="fa fa-check"></i><b>9.1.7</b> Random variable definitions</a></li>
+<li class="chapter" data-level="9.1.8" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#blocks"><i class="fa fa-check"></i><b>9.1.8</b> Blocks</a></li>
+<li class="chapter" data-level="9.1.9" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#objects-1"><i class="fa fa-check"></i><b>9.1.9</b> Objects</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#the-type-system"><i class="fa fa-check"></i><b>9.2</b> The Type System</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#the-types"><i class="fa fa-check"></i><b>9.2.1</b> The types</a></li>
+<li class="chapter" data-level="9.2.2" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#the-default-type"><i class="fa fa-check"></i><b>9.2.2</b> The default type</a></li>
+<li class="chapter" data-level="9.2.3" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#type-promotion"><i class="fa fa-check"></i><b>9.2.3</b> Type promotion</a></li>
+<li class="chapter" data-level="9.2.4" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#typing-of-more-complex-types"><i class="fa fa-check"></i><b>9.2.4</b> Typing of more complex types</a></li>
+<li class="chapter" data-level="9.2.5" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#type-inference-rules-for-symbols"><i class="fa fa-check"></i><b>9.2.5</b> Type inference rules for Symbols</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#scoping-and-statement-ordering"><i class="fa fa-check"></i><b>9.3</b> Scoping and statement ordering</a></li>
+<li class="chapter" data-level="9.4" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#mdl-reference-guide"><i class="fa fa-check"></i><b>9.4</b> MDL Reference Guide</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#how-to-read-the-mdl-reference-guide."><i class="fa fa-check"></i><b>9.4.1</b> How to read the MDL Reference Guide.</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#blocks-1"><i class="fa fa-check"></i><b>9.5</b> Blocks</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#functions-2"><i class="fa fa-check"></i><b>9.5.1</b> Functions</a></li>
+<li class="chapter" data-level="9.5.2" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#distributions"><i class="fa fa-check"></i><b>9.5.2</b> Distributions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="interoperability-guide.html"><a href="interoperability-guide.html"><i class="fa fa-check"></i><b>10</b> Interoperability Guide</a><ul>
+<li class="chapter" data-level="10.1" data-path="interoperability-guide.html"><a href="interoperability-guide.html#on-interoperability-2"><i class="fa fa-check"></i><b>10.1</b> On interoperability</a></li>
+<li class="chapter" data-level="10.2" data-path="interoperability-guide.html"><a href="interoperability-guide.html#dataset-conventions"><i class="fa fa-check"></i><b>10.2</b> Dataset conventions</a></li>
+<li class="chapter" data-level="10.3" data-path="interoperability-guide.html"><a href="interoperability-guide.html#multiple-uses-of-dataset-columns"><i class="fa fa-check"></i><b>10.3</b> Multiple uses of dataset columns</a></li>
+<li class="chapter" data-level="10.4" data-path="interoperability-guide.html"><a href="interoperability-guide.html#defining-constants-in-the-model"><i class="fa fa-check"></i><b>10.4</b> Defining constants in the model</a></li>
+<li class="chapter" data-level="10.5" data-path="interoperability-guide.html"><a href="interoperability-guide.html#interoperability-in-the-model_prediction-block"><i class="fa fa-check"></i><b>10.5</b> Interoperability in the MODEL_PREDICTION block</a></li>
+<li class="chapter" data-level="10.6" data-path="interoperability-guide.html"><a href="interoperability-guide.html#interoperability-in-the-observation-block"><i class="fa fa-check"></i><b>10.6</b> ## Interoperability in the OBSERVATION block</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="the-prior-object" class="section level1">
+<h1><span class="header-section-number">6</span> The Prior Object</h1>
+<p>For Bayesian estimation, the user must specify a Prior Object, which is used in place of the Parameter Object. The Prior Object defines prior distributions or values for all model parameters – both structural and variability. The prior distributions form an additional level of model hierarchy above all other levels of variability in the model. This level of the hierarchy does not need to be explicitly defined in the Model Object <code>VARIABILITY_LEVELS</code> block. it is implied through use of the Prior Object.</p>
+<div id="prior-distributions-vs-initial-values-vs-fixed-values" class="section level2">
+<h2><span class="header-section-number">6.1</span> Prior distributions vs initial values vs fixed values</h2>
+<p>At present we do not support translation of the Prior Object to NONMEM prior specification for use with the $BAYES estimation algorithm. The only supported Bayesian estimation tool currently is WinBUGS. While NONMEM accepts a mix of prior distribution specification and initial values for estimation, WinBUGS requires prior distributions for all parameters, or fixing parameters to a given value. A fixed value can be thought of as a probability mass function (pmf) on a single value. A fixed value for a parameter represents a very strong prior on the value of that parameter. Bounds on parameters should be handled using an appropriate ProbOnto distribution e.g. Beta, Gamma, Uniform, Half-Normal, Truncated-Normal.</p>
+</div>
+<div id="prior_parameters-block" class="section level2">
+<h2><span class="header-section-number">6.2</span> <code>PRIOR_PARAMETERS</code> Block</h2>
+<p>The [<code>PRIOR_PARAMETERS</code>] block holds constants which may be used in the <a href="the-prior-object.html#prior_variable_definition"><code>PRIOR_VARIABLE_DEFINITION</code></a> or <a href="the-prior-object.html#prior_variable_definition"><code>PRIOR_VARIABLE_DEFINITION</code></a> blocks. This allows the user to specify the general form of the prior distribution in the <a href="the-prior-object.html#prior_variable_definition"><code>PRIOR_VARIABLE_DEFINITION</code></a> block and then examine sensitivity to prior choice by altering the values in the [<code>PRIOR_PARAMETERS</code>].</p>
+<p>The [<code>PRIOR_PARAMETERS</code>] block should contain variable assignment statements.</p>
+<pre><code>  &lt;VARIABLE&gt; = &lt;value&gt;</code></pre>
+<p>Note that In the [<code>PRIOR_PARAMETERS</code>] block, the variable is assigned a value, not a list with attributes. As mentioned above, if a model parameter is to be fixed then it takes the value assigned in the [<code>PRIOR_PARAMETERS</code>] block. An attribute “fix=true” is not required.</p>
+<p>For example (/Priors/UseCase1_PRIOR):</p>
+<pre><code>PRIOR_PARAMETERS{
+  # prior on &quot;THETA&quot;
+  MU_POP_CL = 0.2
+  MU_POP_V = 10
+  MU_POP_KA = 0.3
+  MU_POP_TLAG = 0.75
+  VAR_POP_CL = 1
+  VAR_POP_V = 1
+  VAR_POP_KA = 1
+  VAR_POP_TLAG = 0.1
+  
+  # prior on &quot;OMEGA&quot;
+  MU_R_CL = 0.2
+  MU_R_V = 0.2
+  MU_R_V_CL = 0
+  DF_OMEGA = 2
+  MU_OMEGA_KA = 1
+  MU_OMEGA_TLAG = 1
+  
+  # prior on &quot;SIGMA&quot;
+  a_POP_RUV_ADD = 1.1
+  b_POP_RUV_ADD = 3
+  a_POP_RUV_PROP = 1.1
+  b_POP_RUV_PROP = 3
+} # end PRIOR_PARAMETERS</code></pre>
+</div>
+<div id="prior_variable_definition" class="section level2">
+<h2><span class="header-section-number">6.3</span> <code>PRIOR_VARIABLE_DEFINITION</code></h2>
+<div id="parametric-distributions-as-priors" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Parametric distributions as priors</h3>
+<p>In the <a href="the-prior-object.html#prior_variable_definition"><code>PRIOR_VARIABLE_DEFINITION</code></a> block we set up the prior distributions for the <code>STRUCTURAL</code> and <code>VARIABILITY</code> parameters of the Model Object. All model parameters must have a prior distribution specified, or a constant value set.</p>
+<p>If model parameters are correlated or have a multivariate distribution then it is common (although not mandatory) to specify multivariate prior distributions. To do so, the user is likely to need to specify vectors of means and matrices for covariances or correlations. The syntax for specifying vectors and matrices is given in section 9.1.4.7.</p>
+<p>The <a href="the-prior-object.html#prior_variable_definition"><code>PRIOR_VARIABLE_DEFINITION</code></a> block can contain assignment, transformation and random variable definitions using ProbOnto definitions for distributions.</p>
+<p>For example (UseCase1_PRIOR):</p>
+<pre><code>PRIOR_VARIABLE_DEFINITION{
+  # prior on &quot;THETA&quot;
+  lMU_POP_CL = ln(MU_POP_CL)
+  lPOP_CL ~ Normal(mean = lMU_POP_CL, var = VAR_POP_CL)
+  POP_CL = exp(lPOP_V)
+  
+  lMU_POP_V = ln(MU_POP_V)
+  lPOP_V ~ Normal(mean = lMU_POP_V, var = VAR_POP_V)
+  POP_V = exp(lPOP_V)
+  
+  lMU_POP_KA = ln(MU_POP_KA)
+  lPOP_KA ~ Normal(mean = lMU_POP_KA, var = VAR_POP_KA)
+  POP_KA = exp(lPOP_KA)
+  
+  lMU_POP_TLAG = ln(MU_POP_TLAG)
+  lPOP_TLAG ~ Normal(mean = lMU_POP_TLAG, var = VAR_POP_TLAG)
+  POP_TLAG = exp(lPOP_TLAG)
+ 
+  # priors on &quot;OMEGA&quot;
+  R_mat = [[ MU_R_CL, MU_R_V_CL;
+             MU_R_V_CL, MU_R_V ]]
+             
+  TAU_CL_V ~ Wishart2(inverseScaleMatrix = R_mat, degreesOfFreedom = DF_OMEGA)
+  OMEGA_CL_V = inverse(TAU_CL_V)
+  PPV_CL = sqrt(OMEGA_CL_V[1,1])
+  PPV_V = sqrt(OMEGA_CL_V[2,2])
+  PPV_V_CL = OMEGA_CL_V[1,2]
+  
+  TAU_KA ~ Gamma2(shape = 0.001, rate = 0.001)
+  PPV_KA = sqrt(1/TAU_KA)
+  
+  # prior on &quot;SIGMA&quot;
+  invRUV_ADD ~ Gamma2(shape = a_POP_RUV_ADD, rate = b_POP_RUV_ADD)
+  invRUV_PROP ~ Gamma2(shape = a_POP_RUV_PROP, rate = b_POP_RUV_PROP)
+  RUV_ADD = sqrt(1/invRUV_ADD)
+  RUV_PROP = sqrt(1/invRUV_PROP)
+  } # end PRIOR_VARIABLE_DEFINITION</code></pre>
+<p>Note the following parameters have prior distributions assigned: POP_CL, POP_V, POP_KA, POP_TLAG, PPV_CL, PPV_V, COV_CL_V, PPV_KA, RUV_ADD, RUV_PROP.</p>
+<p>Note that priors on between subject variability are given on the precision scale (= 1 / variance). This is to facilitate use in BUGS. Here the distributions used are Wishart and Gamma on the precision parameters, but Inverse-Wishart and Inverse-Gamma may alternatively be used on the variance-covariance matrix and variance parameters.</p>
+<p>Note also that priors for POP_CL, POP_V, POP_KA and POP_TLAG could also be defined using logNormal1 distributions (using the ProbOnto distribution) instead of transforming and back-transforming using Normal(…) distributions.</p>
+<p>To specify a matrix, we use double square brackets, and specify elements row-wise, separated with a semi-colon. To specify elements of a matrix we use the R convention of square bracket specifying row and column entries. For example:</p>
+<pre><code>R_mat = [[ MU_R_CL, MU_R_V_CL;
+           MU_R_V_CL, MU_R_V ]]</code></pre>
+<p>To specify the first row and column entry (corresponding to MU_R_CL): <code>R_mat[1,1]</code>.</p>
+<p>Note that a Gamma distribution is used to define the prior on the between subject variability for PPV_KA. This is a legacy from the early days of fitting hierarchical models in BUGS where Gamma priors were conjugate and easier to sample from. They have been somewhat discredited as prior choices. Recent literature has favoured Half-Cauchy priors on variance parameters of hierarchical models as they are robust against smaller numbers of subjects.[^16]</p>
+</div>
+</div>
+<div id="non-parametric-and-empirical-distributions-as-priors-inline-data." class="section level2">
+<h2><span class="header-section-number">6.4</span> Non-parametric and empirical distributions as priors – inline data.</h2>
+<p>As an alternative to parametric distributions as priors, the user can specify non-parametric distributions (specifying bins of values and probabilities for each bin) or empirical distributions (specifying data forming the basis of empirical sampling). Univariate and multivariate sampling distributions have been defined in MDL for non-parametric and empirical sampling distributions.</p>
+<p>In both cases the source for the non-parametric or empirical sampling can be specified inline via the [<code>PRIOR_PARAMETERS</code>] block, or by referencing an external data source in the <a href="the-prior-object.html#prior_source"><code>PRIOR_SOURCE</code></a> block.</p>
+<div id="non-parametric-distribution-specification-with-inline-data." class="section level3">
+<h3><span class="header-section-number">6.4.1</span> Non-parametric distribution specification with inline data.</h3>
+<p>To specify a non-parametric distribution, MDL has a distributions called NonParametric and MultiNonParametric. These map to the ProbOnto RandomSample non-parametric distribution definition. To specify the non-parametric distributions, the user must supply bins and probabilities for sampling. To specify this inline we create a vector (for NonParametric) or matrix (for MultiNonParametric) of bins and a vector of probabilities. These are specified in the [<code>PRIOR_PARAMETERS</code>] block.</p>
+<p>For example (Priors examples, Example3421dep)</p>
+<pre><code>PRIOR_PARAMETERS{
+  
+  …
+  
+  # For Non-Parametric distribution
+  
+  bins_POP_K_V =
+  matrix(vector = [2.006510,2.045465,2.084421,2.123377,2.162333,2.201288,2.240244,2.279200,2.318156,2.357111,
+                   5.050013,5.050013,5.050013,5.050013,5.064166,5.064166,5.064166,5.064166,5.078318,5.078318],
+                   ncol = 2, byRow is FALSE)
+  
+  p_POP_K_V = [0.033333,0.100000,0.100000,0.200000,0.100000,0.066667,0.166667,0.100000,0.066667,0.066667]
+} # end PRIOR
+  
+PRIOR_VARIABLE_DEFINITION{
+  # prior on &quot;THETA&quot;
+  POP_K_V ~ MultiNonParametric(probability = p_POP_K_V, bins = bins_POP_K_V)
+  POP_K = POP_K_V[1]
+  POP_V = POP_K_V[2]
+  …
+} # end PRIOR_VARIABLE_DEFINITION</code></pre>
+<p>Here a matrix of bins for POP_K and POP_V is created by specifying a vector of values and then defining the number of columns and method for filling the matrix. A vector of probabilities is also defined. Then in the <a href="the-prior-object.html#prior_variable_definition"><code>PRIOR_VARIABLE_DEFINITION</code></a> block the multivariate non-parametric sampling distribution is defined referencing the probabilities and bins. Finally the Priors for POP_K and POP_V are defined by referencing the elements of the POP_K_V vector.</p>
+</div>
+<div id="empirical-distribution-specification-with-inline-data." class="section level3">
+<h3><span class="header-section-number">6.4.2</span> Empirical distribution specification with inline data.</h3>
+<p>Similarly, the user can specify the data source for empirical sampling within the [<code>PRIOR_PARAMETERS</code>] block and then refer to this in defining the sampling distribution for the <a href="the-prior-object.html#prior_variable_definition"><code>PRIOR_VARIABLE_DEFINITION</code></a>.</p>
+<p>For example (Priors examples, Example 3422)</p>
+<pre><code>PRIOR_PARAMETERS{
+  data_POP_K_V =
+    matrix(vector = [2.006510,2.045465,2.084421,2.123377,2.162333,2.201288,2.240244,2.279200,2.318156,2.357111,
+                     5.050013,5.050013,5.050013,5.050013,5.064166,5.064166,5.064166,5.064166,5.078318,5.078318],
+                     ncol = 2, byRow is FALSE)
+  …
+  
+} # end PRIOR
+  
+PRIOR_VARIABLE_DEFINITION{
+  # prior on &quot;THETA&quot;
+  POP_K_V ~ MultiEmpirical(data = data_POP_K_V)
+  POP_K = POP_K_V[1]
+  POP_V = POP_K_V[2]
+  …
+} # end PRIOR_VARIABLE_DEFINITION</code></pre>
+<p>Again, the data source is defined by specifying a matrix of values for POP_K and POP_V and then using this as the basis for the MultiEmpirical sampling distribution. For the univariate Empirical sampling distribution, only a vector would be needed as the basis for sampling.</p>
+</div>
+</div>
+<div id="non_canonical_distribution" class="section level2">
+<h2><span class="header-section-number">6.5</span> <code>NON_CANONICAL_DISTRIBUTION</code></h2>
+<p>As an alternative to inline data specification for non-parametric or empirical sampling distributions, the user may reference and external dataset for bins and probabilities (for use with non-parametric sampling distributions) or data for the basis of the empirical sampling distribution.</p>
+<div id="prior_source" class="section level3">
+<h3><span class="header-section-number">6.5.1</span> <code>PRIOR_SOURCE</code></h3>
+<p>Similarly to the <code>SOURCE</code> block within the Data Object, the <a href="the-prior-object.html#prior_source"><code>PRIOR_SOURCE</code></a> block is a named list providing the file name, format of the source data. However the <a href="the-prior-object.html#prior_source"><code>PRIOR_SOURCE</code></a> block adds an argument to the list to provide a vector of column names to be used in the data source for the sampling distributions.</p>
+<p>The syntax is as follows:</p>
+<pre><code>PRIOR_SOURCE{
+ &lt;data source name&gt; : { file = &lt;”filename.csv”&gt;, 
+                        inputFormat is csv, 
+                        column = [&lt;”variable name1”, “variable name2”, 
+                                  … , “variable name k”]}
+}</code></pre>
+<p>Multiple data sources may be defined within the <a href="the-prior-object.html#prior_source"><code>PRIOR_SOURCE</code></a> block.</p>
+</div>
+<div id="input_prior_data" class="section level3">
+<h3><span class="header-section-number">6.5.2</span> <code>INPUT_PRIOR_DATA</code></h3>
+<p>The PRIOR_SOURCE data objects can then be referenced in the <a href="the-prior-object.html#input_prior_data"><code>INPUT_PRIOR_DATA</code></a> block to define how the data file columns map to objects to be used in the <a href="the-prior-object.html#prior_variable_definition"><code>PRIOR_VARIABLE_DEFINITION</code></a> block sampling distributions. This is done using anonymous lists.</p>
+<p>The syntax is as follows:</p>
+<pre><code>INPUT_PRIOR_DATA{
+  :: { src = &lt;PRIOR_SOURCE data variable&gt;, 
+       vector | matrix = &lt;**PRIOR_VARIABLE_DEFINITION object&gt;, 
+       column = “&lt;PRIOR_SOURCE data column name&gt;” }
+}</code></pre>
+<p>For example :</p>
+<pre><code>NON_CANONICAL_DISTRIBUTION{
+  PRIOR_SOURCE{
+    NonPar_K_V : { file = &quot;Nonparametric_K_V.csv&quot;, 
+                   inputFormat is csv,
+                   column = [&quot;bins_k&quot;, &quot;bins_v&quot;, &quot;p_k_v&quot;]}
+                   
+    Emp_SIGMA : { file = &quot;Empirical_Sigma.csv&quot;, 
+                  inputFormat is csv,
+                  column = [&quot;data_SIGMA2&quot;]}
+  }
+
+  INPUT_PRIOR_DATA{
+    :: { src = NonPar_K_V, vectorVar = p_k_v, column = &quot;p_k_v&quot;}
+    :: { src = NonPar_K_V, matrixVar=bins_k_v, column = [&quot;bin_k&quot;, &quot;bins_v&quot;] }
+    :: { src = Emp_SIGMA, column = &quot;data_SIGMA2&quot;, vectorVar = data_SIGMA2 }
+    }
+  }
+
+PRIOR_VARIABLE_DEFINITION{
+  p_k_v::vector
+  bins_k_v::matrix
+  data_SIGMA2::vector
+  
+  POP_k_v ~ MultiNonParametric(bins = bins_k_v, probability = p_k_v)
+  POP_SIGMA2 ~ Empirical(data = data_SIGMA2)
+  POP_K = POP_k_v[0]
+  POP_V = POP_k_v[1]
+  }</code></pre>
+<p>In the above example, two sources are specified – one giving non-parametric sampling bins and probabilities for K and V, the other providing values for SIGMA to be used in the empirical sampling distribution. In the definition of NonPar_K_V we want to read three columns from the <a href="the-prior-object.html#prior_source"><code>PRIOR_SOURCE</code></a> data file – “bins_k” and “bins_v” to specify the bins for K and V, and “p_k_v” to specify the probabilities for sampling these bins. In the definition of Emp_SIGMA we define the columns of the <a href="the-prior-object.html#prior_source"><code>PRIOR_SOURCE</code></a> data file to use as the basis of the empirical sampling distribution of SIGMA.</p>
+<p>In the <a href="the-prior-object.html#input_prior_data"><code>INPUT_PRIOR_DATA</code></a> block we specify how the defined <a href="the-prior-object.html#prior_source"><code>PRIOR_SOURCE</code></a> information is to be mapped to vectors and matrices defined in the <a href="the-prior-object.html#prior_variable_definition"><code>PRIOR_VARIABLE_DEFINITION</code></a> block and used in the definition of the sampling distributions. Note that in the <a href="the-prior-object.html#prior_variable_definition"><code>PRIOR_VARIABLE_DEFINITION</code></a> block we must define the type of the objects p_k_v, bins_k_v and data_SIGMA2 (vector, matrix and vector respectively). POP_k_v is then sampled from a multivariate non-parametric sampling distribution with bins specified by the matrix bins_k_v and sampling probabilities by the vector p_k_v, while POP_SIGMA2 is sampled from an empirical sampling distribution with values held in the vector data_SIGMA2.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="the-task-properties-object.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-design-object.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"download": ["MDL_UserGuide_and_ReferenceManual.pdf", "MDL_UserGuide_and_ReferenceManual.epub"],
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

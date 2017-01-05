@@ -1,0 +1,94 @@
+# The MOG Object
+
+The MOG Object is where the user defines the MDL objects required for a
+particular task: estimation, simulation, design evaluation or
+optimisation.
+
+## `INFO`
+
+The [`INFO`] block provides a name and/or problem statement to the
+associated MOG. The name attribute populates the Name tag in
+PharmML, while the problemStmt attribute populates the Description
+tag in PharmML. This information can then be passed forward to target
+software that support names or problem statement definition. For
+example, NONMEM conversion uses the problemStmt attribute to
+populate the `$PROB` statement, while the name attribute is converted
+to metadata in the comment header of the control stream file.
+
+By default the Name tag in PharmML is “Generated from MDL. MOG ID: <MOG
+object name>”.
+
+The `problemStmt` attribute can be set via the ddmore R package function
+`writeMDL( … , problemStmt = “Problem statement text”)`.
+
+The syntax for the [`INFO`] block is:
+   
+```
+INFO{
+  set problemStmt = <text string> ,
+  name = <text string>
+  }
+```
+   
+The statements can be comma separated or the set command can be used
+for each line.
+
+For example (UseCase1_1.mdl):
+   
+```
+INFO{
+  set problemStmt = "my Problem Statement"
+  set name = "10May2016 Task Properties check"
+  }
+```
+   
+## `OBJECTS`
+
+The [`OBJECTS`] block defines the objects (defined in the current .mdl
+file) that are to be used in defining the Modelling Objects Group for
+use in the desired task. The MDL-IDE checks that these named objects
+exist in the current file.
+
+The MDL-IDE also uses the MOG Object to “tie together” variable
+definitions across objects – it checks that variables used in the model
+are defined. So for example, if the model expects a covariate called
+logtWT but this is not defined in the Data Object then an error is
+given. Without a MOG Object, no validation check of this type is
+possible. Without the MOG Object, the MDL-IDE can only perform
+rudimentary syntax checking of MDL statements. With the MOG Object
+defined the MDL-IDE can check that the resulting model will result in
+valid PharmML.
+
+The syntax for statements in this block is :
+   
+```
+<Object name within the current MDL file> : {type is <dataObj | 
+designObj | mdlObj | parObj | priorObj | taskObj>}
+```
+   
+Note that in the MOG Object, the user must specify dataObj *OR*
+designObj; parObj *OR* priorObj. As stated previously,
+for simulation, design evaluation or optimisation the Design Object
+takes the place of the Data Object. Similarly for estimation with BUGS
+or other Bayesian estimation software the Prior Object takes the place
+of the Parameter Object.
+
+For example (UseCase1.mdl):
+   
+```
+warfarin_PK_ODE_mog = mogObj {
+  OBJECTS{
+    warfarin_PK_ODE_dat : { type is dataObj }
+    warfarin_PK_ODE_mdl : { type is mdlObj }
+    warfarin_PK_ODE_par : { type is parObj }
+    warfarin_PK_ODE_task : { type is taskObj }
+    }
+ }
+```
+   
+## Mapping of variable names between MDL Objects
+
+The current version of MDL requires that variable names in each object
+are consistently named. Future versions of MDL may allow mapping between
+variable names across objects.
+
