@@ -10,13 +10,14 @@ output:
         after: null
       toolbar:
         position: fixed
-      edit : null  # Change to Github URL for folks to edit. Should have %s to substitute each Rmd filename for each page.
+      edit : https://github.com/ModelDefinitionLanguage/MDLUserGuide/blob/master/%s
       download: ["MDL_UserGuide_and_ReferenceManual.pdf", "MDL_UserGuide_and_ReferenceManual.epub"]
       search: yes
       fontsettings:
         theme: white
         family: sans
         size: 2
+bookdown::pdf_book:
 documentclass: book
 bibliography: "references.bib"
 biblio-style: "apalike"
