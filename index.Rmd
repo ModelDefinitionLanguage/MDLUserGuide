@@ -11,7 +11,7 @@ output:
       toolbar:
         position: fixed
       edit : https://github.com/ModelDefinitionLanguage/MDLUserGuide/blob/master/%s
-      download: ["MDL_UserGuide_and_ReferenceManual.pdf", "MDL_UserGuide_and_ReferenceManual.epub"]
+      download: ["_main.pdf", "_main.epub"]
       search: yes
       fontsettings:
         theme: white
