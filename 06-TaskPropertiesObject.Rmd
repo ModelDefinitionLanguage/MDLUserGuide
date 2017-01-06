@@ -1,4 +1,4 @@
-# The Task Properties Object
+# Task Properties Object
 
 The Task Properties Object is intended to convey information to specific
 target software related to algorithms, settings, options for performing

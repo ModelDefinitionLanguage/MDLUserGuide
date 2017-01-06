@@ -1,4 +1,4 @@
-# The Model Object
+# Model Object
 
 The Model Object within the MDL is intended to describe the mathematical
 and statistical properties of the model. MDL defines language elements
@@ -233,7 +233,7 @@ VARIABILITY_PARAMETERS {
 ### Residual Unexplained Variability
 
 Residual variability is typically defined as a standard Normal
-distribution \~N(mean=0, var=1). The standard residual error models (see
+distribution ~N(mean=0, var=1). The standard residual error models (see
 section 4.12.1) then define the parameters of that model e.g. additive
 and proportional which multiply the random N(0,1) variable. They can
 also define expressions involving parameters which define the residual
@@ -1640,7 +1640,7 @@ translation of the hazard specification to target tool implementation.
 For some software this involves calculation of the survival function and
 associated likelihood.
 
-For an arbitrary hazard function λ(t):
+For an arbitrary hazard function $$\lambda\left(t\right)$$:
 
   Hazard function                   | $$\lambda\left( t \right)$$
   ----------------------------------| ------------------------------------------------------------------------------------
@@ -1649,9 +1649,8 @@ For an arbitrary hazard function λ(t):
   Probability density function      | $$p\left( t \right) = \lambda\left( t \right)e^{- \Lambda\left( t_{0},t \right)}$$
   Cumulative distribution function  | $$P\left( T < t \right) = \int_{0}^{t}{p\left( s \right)\text{ds}}$$
 
-For an introduction to TTE models see Holford (2013) and for a tutorial
-in implementation in NONMEM and Monolix see Holford and Lavielle,
-(2011).
+For an introduction to TTE models see [@Holford_2013] and for a tutorial
+in implementation in NONMEM and Monolix see [@Holford2011].
 
 The MDL syntax for time to event outcomes is :
 
@@ -1715,7 +1714,7 @@ The syntax is as follows:
 Specifying the types of each argument and the type of the function
 result allows validation of the function inputs and outputs.
 
-To call the function, the user types “& before the function name.
+To call the function, the user types `&` before the function name.
 
 For example:
   

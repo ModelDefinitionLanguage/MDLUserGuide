@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="preface.html">
+<link rel="prev" href="interoperability-guide.html">
+<link rel="next" href="references.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -240,23 +240,117 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<!--bookdown:title:end-->
-<!--bookdown:title:start-->
-<div id="mdl-user-guide-and-reference-manual" class="section level1 unnumbered">
-<h1>MDL User Guide and Reference Manual</h1>
-<p><img src="images/ddmore_logo4.jpg" width="70%" /></p>
-<p><strong>Author: MDL Development Team</strong></p>
-<p><strong>MDL Version 1.0</strong></p>
-<p>2017-01-06</p>
+<div id="changelog" class="section level1">
+<h1><span class="header-section-number">11</span> Changelog</h1>
+<div id="v1.0---19-august-2016" class="section level2">
+<h2><span class="header-section-number">11.1</span> v1.0 - 19 August 2016</h2>
+<ul>
+<li><p>Public release of MDL, PharmML, DDMoRe Interoperability Framework Standalone Execution Environment (SEE)</p></li>
+<li><p>MDL v1.0 <a href="https://drive.google.com/file/d/0B7IApcUw89-edkZwMlNZRU5EWjQ/view?usp=sharing">MDL User Guide for public release</a></p></li>
+</ul>
+<p>The MDL Documented in the MDL User Guide hosted on Github is the latest release (currently v1.0) but the documentation has been updated where necessary. The version linked above is a snapshot of documentation for the IMI DDMoRe project deliverable at the close of the project.</p>
+<ul>
+<li>PharmML v0.8.1</li>
+</ul>
+<div id="scope" class="section level3">
+<h3><span class="header-section-number">11.1.1</span> Scope</h3>
+<p>The primary focus of MDL in this release is translation to valid PharmML, rather than conversion to target software. The previous release was primarily concerned with demonstrating interoperability across key software targets. In this version of MDL there may be MDL features which are not supported in conversion from PharmML to certain target software, but which are valid for model description and which generate valid PharmML. The aim is to widen the scope of models which can be encoded in MDL and generate PharmML for uploading to the DDMoRe repository and for future interoperability. Translation of these models to target software will follow with updates to the interoperability framework converters.</p>
+<p>The changes to MDL since draft 7 (v0.7) enable integration of the Prior and Design Objects and improved validation of MDL giving increased confidence in generation of valid PharmML. In order to facilitate this, certain changes to syntax have been made that are <strong><em>NOT</em></strong> backwards compatible. This is regrettable since it means that existing models required changes. We do not make these changes lightly.</p>
+</div>
+<div id="changes-v0.7-to-v1.0" class="section level3">
+<h3><span class="header-section-number">11.1.2</span> CHANGES v0.7 to v1.0</h3>
+<p>The follow are <strong>critical</strong> changes which <strong><em>break backward compatibility</em></strong> with v0.7:</p>
+<div id="data-object-1" class="section level4">
+<h4><span class="header-section-number">11.1.2.1</span> <a href="data-object.html#data-object">Data Object</a></h4>
+<ul>
+<li><a href="data-object.html#declared_variables"><code>DECLARED_VARIABLES</code></a> block must now have type assigned to variables to enable validation of variable types between MDL objects, particularly Design Object variables.</li>
+</ul>
+</div>
+<div id="parameter-object-1" class="section level4">
+<h4><span class="header-section-number">11.1.2.2</span> <a href="parameter-object.html#parameter-object">Parameter Object</a></h4>
+<ul>
+<li><p>Correlations and covariances between parameters are now specified in the Model Object and must be named parameters. This is to facilitate specification of priors on these parameters.</p></li>
+<li><p>Users should not specify the type of variability definition (<code>type is sd</code>, <code>type is var</code>, <code>type is corr</code>, <code>type is cov</code>) for <a href="parameter-object.html#variability"><code>VARIABILITY</code></a> parameters.The variability, covariance or correlation type is specified and used in the <a href="model-object.html#random_variable_definition"><code>RANDOM_VARIABLE_DEFINITION</code></a> block in the <a href="model-object.html#model-object">Model Object</a> where these parameters are defined.</p></li>
+</ul>
+</div>
+<div id="model-object-1" class="section level4">
+<h4><span class="header-section-number">11.1.2.3</span> <a href="model-object.html#model-object">Model Object</a></h4>
+<ul>
+<li><p>Left hand side transformations for [<code>INDIVIDUAL_PARAMETERS</code>] are no longer valid. These were felt to be confusing.</p></li>
+<li><p>Right hand side functions for [<code>INDIVIDUAL_PARAMETERS</code>] and <a href="model-object.html#observation"><code>OBSERVATION</code></a> definitions are now list definitions with the matching type to the function. This, combined with conditional statements allows more flexibility in parameter and <a href="model-object.html#observation"><code>OBSERVATION</code></a> definitions.</p></li>
+<li><p>Non-continuous outcomes (binary, count, categorical) must be defined as RANDOM_VARIABLE_DEFINITION(level=DV){ … } and then the variable defined assigned as an anonymous list in the <a href="model-object.html#observation"><code>OBSERVATION</code></a> block. This is to ensure that outcome variables are always defined with variability at the DV level. (This is implicit in continuous outcomes due to definition of residual error at the DV level).</p></li>
+<li><p>Arbitrary equations defining the outcome variable are not allowed in the <a href="model-object.html#observation"><code>OBSERVATION</code></a> block. Use “type is userDefined” instead.</p></li>
+</ul>
+</div>
+</div>
+<div id="new-features-in-v1.0" class="section level3">
+<h3><span class="header-section-number">11.1.3</span> NEW FEATURES in v1.0</h3>
+<div id="general" class="section level4">
+<h4><span class="header-section-number">11.1.3.1</span> General</h4>
+<ul>
+<li><p>Support for vectors and matrices</p></li>
+<li><p>Support for conditional assignment to lists.</p></li>
+</ul>
+</div>
+<div id="data-object-2" class="section level4">
+<h4><span class="header-section-number">11.1.3.2</span> <a href="data-object.html#data-object">Data Object</a></h4>
+<ul>
+<li><p>Support for model input variables passed from the Data Object with “use is variable”. This equates to “regressor” type inputs to models.</p></li>
+<li><p>Support for <a href="data-object.html#data_derived_variables"><code>DATA_DERIVED_VARIABLES</code></a> where dose amounts and dose times can be derived from data columns which are being used otherwise as <code>use is amt</code> or <code>use is idv</code>.</p></li>
+</ul>
+</div>
+<div id="parameter-object-2" class="section level4">
+<h4><span class="header-section-number">11.1.3.3</span> <a href="parameter-object.html#parameter-object">Parameter Object</a></h4>
+<p>No new features. See changes section above.</p>
+</div>
+<div id="model-object-2" class="section level4">
+<h4><span class="header-section-number">11.1.3.4</span> <a href="model-object.html#model-object">Model Object</a></h4>
+<ul>
+<li><p>Support for definition of parameters in <a href="model-object.html#random_variable_definition"><code>RANDOM_VARIABLE_DEFINITION</code></a> i.e. definition of CL ~ Normal(mean=POP_CL, sd=PPV_CL) for subsequent use in [<code>INDIVIDUAL_PARAMETERS</code>]. This combined with support for ProbOnto definitions allows the user to define multivariate distributions of parameters, mixture distributions etc.</p></li>
+<li><p>Support for ProbOnto distributions in <a href="model-object.html#random_variable_definition"><code>RANDOM_VARIABLE_DEFINITION</code></a>.</p></li>
+<li><p>Support for combination of compartment definitions with differential equations.</p></li>
+<li><p>Support for userDefined specification of the relationship between model predictions and residual error random variables in the <a href="model-object.html#observation"><code>OBSERVATION</code></a> block.</p></li>
+</ul>
+</div>
+<div id="task-properties-object-1" class="section level4">
+<h4><span class="header-section-number">11.1.3.5</span> <a href="task-properties-object.html#task-properties-object">Task Properties object</a></h4>
+<ul>
+<li>Support for target software specific <a href="task-properties-object.html#task-properties-object">Task Properties object</a>.</li>
+</ul>
+</div>
+<div id="mog-object-1" class="section level4">
+<h4><span class="header-section-number">11.1.3.6</span> <a href="mog-object.html#mog-object">MOG Object</a></h4>
+<ul>
+<li>Support for specifying problem statement and model name in the <a href="mog-object.html#info"><code>INFO</code></a> block.</li>
+</ul>
+</div>
+<div id="prior-object-1" class="section level4">
+<h4><span class="header-section-number">11.1.3.7</span> <a href="prior-object.html#prior-object">Prior Object</a></h4>
+<p>The <a href="prior-object.html#prior-object">Prior Object</a> is a new block for v1.0</p>
+</div>
+<div id="design-object-1" class="section level4">
+<h4><span class="header-section-number">11.1.3.8</span> <a href="design-object.html#design-object">Design Object</a></h4>
+<p>The <a href="design-object.html#design-object">Design Object</a> is a new block for v1.0</p>
+</div>
+</div>
+</div>
+<div id="v0.7---11-december-2015" class="section level2">
+<h2><span class="header-section-number">11.2</span> v0.7 - 11 December 2015</h2>
+<ul>
+<li><p>First public release of MDL</p></li>
+<li><p>MDL v0.7 <a href="https://drive.google.com/file/d/0B7IApcUw89-eOGxVeFkyNWg5SEU/view?usp=sharing">MDL User Guide</a></p></li>
+<li><p>PharmML v0.6</p></li>
+</ul>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="preface.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="interoperability-guide.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -284,7 +378,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ModelDefinitionLanguage/MDLUserGuide/blob/master/index.Rmd",
+"link": "https://github.com/ModelDefinitionLanguage/MDLUserGuide/blob/master/12-Changelog.Rmd",
 "text": "Edit"
 },
 "download": ["MDL_UserGuide_and_ReferenceManual.pdf", "MDL_UserGuide_and_ReferenceManual.epub"],

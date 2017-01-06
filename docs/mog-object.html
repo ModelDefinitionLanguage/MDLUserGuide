@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="preface.html">
+<link rel="prev" href="design-object.html">
+<link rel="next" href="mdl-language-reference.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -240,23 +240,58 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<!--bookdown:title:end-->
-<!--bookdown:title:start-->
-<div id="mdl-user-guide-and-reference-manual" class="section level1 unnumbered">
-<h1>MDL User Guide and Reference Manual</h1>
-<p><img src="images/ddmore_logo4.jpg" width="70%" /></p>
-<p><strong>Author: MDL Development Team</strong></p>
-<p><strong>MDL Version 1.0</strong></p>
-<p>2017-01-06</p>
+<div id="mog-object" class="section level1">
+<h1><span class="header-section-number">8</span> MOG Object</h1>
+<p>The MOG Object is where the user defines the MDL objects required for a particular task: estimation, simulation, design evaluation or optimisation.</p>
+<div id="info" class="section level2">
+<h2><span class="header-section-number">8.1</span> <code>INFO</code></h2>
+<p>The <a href="mog-object.html#info"><code>INFO</code></a> block provides a name and/or problem statement to the associated MOG. The name attribute populates the Name tag in PharmML, while the problemStmt attribute populates the Description tag in PharmML. This information can then be passed forward to target software that support names or problem statement definition. For example, NONMEM conversion uses the problemStmt attribute to populate the <code>$PROB</code> statement, while the name attribute is converted to metadata in the comment header of the control stream file.</p>
+<p>By default the Name tag in PharmML is “Generated from MDL. MOG ID: <MOG
+object name>”.</p>
+<p>The <code>problemStmt</code> attribute can be set via the ddmore R package function <code>writeMDL( … , problemStmt = “Problem statement text”)</code>.</p>
+<p>The syntax for the <a href="mog-object.html#info"><code>INFO</code></a> block is:</p>
+<pre><code>INFO{
+  set problemStmt = &lt;text string&gt; ,
+  name = &lt;text string&gt;
+  }</code></pre>
+<p>The statements can be comma separated or the set command can be used for each line.</p>
+<p>For example (UseCase1_1.mdl):</p>
+<pre><code>INFO{
+  set problemStmt = &quot;my Problem Statement&quot;
+  set name = &quot;10May2016 Task Properties check&quot;
+  }</code></pre>
+</div>
+<div id="objects" class="section level2">
+<h2><span class="header-section-number">8.2</span> <code>OBJECTS</code></h2>
+<p>The <a href="mog-object.html#objects"><code>OBJECTS</code></a> block defines the objects (defined in the current .mdl file) that are to be used in defining the Modelling Objects Group for use in the desired task. The MDL-IDE checks that these named objects exist in the current file.</p>
+<p>The MDL-IDE also uses the MOG Object to “tie together” variable definitions across objects – it checks that variables used in the model are defined. So for example, if the model expects a covariate called logtWT but this is not defined in the Data Object then an error is given. Without a MOG Object, no validation check of this type is possible. Without the MOG Object, the MDL-IDE can only perform rudimentary syntax checking of MDL statements. With the MOG Object defined the MDL-IDE can check that the resulting model will result in valid PharmML.</p>
+<p>The syntax for statements in this block is :</p>
+<pre><code>&lt;Object name within the current MDL file&gt; : {type is &lt;dataObj | 
+designObj | mdlObj | parObj | priorObj | taskObj&gt;}</code></pre>
+<p>Note that in the MOG Object, the user must specify dataObj <em>OR</em> designObj; parObj <em>OR</em> priorObj. As stated previously, for simulation, design evaluation or optimisation the Design Object takes the place of the Data Object. Similarly for estimation with BUGS or other Bayesian estimation software the Prior Object takes the place of the Parameter Object.</p>
+<p>For example (UseCase1.mdl):</p>
+<pre><code>warfarin_PK_ODE_mog = mogObj {
+  OBJECTS{
+    warfarin_PK_ODE_dat : { type is dataObj }
+    warfarin_PK_ODE_mdl : { type is mdlObj }
+    warfarin_PK_ODE_par : { type is parObj }
+    warfarin_PK_ODE_task : { type is taskObj }
+    }
+ }</code></pre>
+</div>
+<div id="mapping-of-variable-names-between-mdl-objects" class="section level2">
+<h2><span class="header-section-number">8.3</span> Mapping of variable names between MDL Objects</h2>
+<p>The current version of MDL requires that variable names in each object are consistently named. Future versions of MDL may allow mapping between variable names across objects.</p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="preface.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="design-object.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="mdl-language-reference.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -284,7 +319,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ModelDefinitionLanguage/MDLUserGuide/blob/master/index.Rmd",
+"link": "https://github.com/ModelDefinitionLanguage/MDLUserGuide/blob/master/09-MOGObject.Rmd",
 "text": "Edit"
 },
 "download": ["MDL_UserGuide_and_ReferenceManual.pdf", "MDL_UserGuide_and_ReferenceManual.epub"],

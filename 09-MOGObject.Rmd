@@ -1,4 +1,4 @@
-# The MOG Object
+# MOG Object
 
 The MOG Object is where the user defines the MDL objects required for a
 particular task: estimation, simulation, design evaluation or
@@ -67,7 +67,7 @@ designObj | mdlObj | parObj | priorObj | taskObj>}
 ```
    
 Note that in the MOG Object, the user must specify dataObj *OR*
-designObj; parObj *OR* priorObj. As stated previously,
+designObj; parObj **OR** priorObj. As stated previously,
 for simulation, design evaluation or optimisation the Design Object
 takes the place of the Data Object. Similarly for estimation with BUGS
 or other Bayesian estimation software the Prior Object takes the place

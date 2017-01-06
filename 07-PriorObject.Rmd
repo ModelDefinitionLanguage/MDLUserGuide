@@ -1,4 +1,4 @@
-# The Prior Object
+# Prior Object
 
 For Bayesian estimation, the user must specify a Prior Object, which is
 used in place of the Parameter Object. The Prior Object defines prior
@@ -169,7 +169,7 @@ days of fitting hierarchical models in BUGS where Gamma priors were
 conjugate and easier to sample from. They have been somewhat discredited
 as prior choices. Recent literature has favoured Half-Cauchy priors on
 variance parameters of hierarchical models as they are robust against
-smaller numbers of subjects.[^16]
+smaller numbers of subjects.[@Gelman2006]
 
 ## Non-parametric and empirical distributions as priors – inline data.
 

@@ -250,8 +250,9 @@ with `use is rate`. **The current version
 of MDL does not support negative values for “use is rate” in order to
 allow model defined rate or duration.**
 
-Please also read the section 2.2.7 and 2.2.8 on assignment using
-`variable = …” compared to using `define = …”.
+Please also read the section \@ref(variableAssignment) and 
+\@ref(defineAssignment) on assignment using
+`variable = …` compared to using `define = …`.
 
 ### Defining the independent variable
 
@@ -524,10 +525,10 @@ VARIABILITY_LEVELS{
   }
 ```
 
-See section 4.6 for discussion of identifying the reference level of
-variability when using a model with a Design Object.
+See section \@ref(VARIABILITY_LEVELS) for discussion of identifying the 
+reference level of variability when using a model with a Design Object.
 
-### span>Defining covariates
+### Defining covariates
 
 #### Defining continuous covariates
 
@@ -539,9 +540,13 @@ covariates that are to be used in definition of
 `INDIVIDUAL_PARAMETERS`.
 
 Interpolation can be specified for continuous covariates through the
-argument “interp = &constInterp | &cubicInterp | &lastValueInterp |
-&linearInterp | &nearestInterp | &pchipInterp | &splineInterp”.
-
+argument:
+   
+```
+interp = &constInterp | &cubicInterp | &lastValueInterp |
+&linearInterp | &nearestInterp | &pchipInterp | &splineInterp
+```
+   
 Note the “&” in front of the interpolation type to signify that a
 function is being referenced.
 
@@ -558,7 +563,7 @@ clarity on how numeric codes in the data map to named categories and
 secondly, transparency in model description by allowing us to use those
 named category labels in the model when referring to the categories.
 
-The mapping is performed by using the keyword “withCategories” and then
+The mapping is performed by using the keyword `withCategories` and then
 specifying the mapping between categories and values using <category>
 when <value> in a comma separated list.
    
@@ -616,7 +621,7 @@ These variables are defined in MDL as `use is variable”`.
 Variables with `use is variable` should not be used with definition
 of INDIVIDUAL_PARAMETERS with `type is linear`.
 
-### Assignment to a single variable using `variable = <NAME>`
+### Assignment to a single variable using `variable = <NAME>` {#variableAssignment}
 
 If the value of the variable within the data is to be mapped to a single
 model variable e.g. dosing amount D, then the variable attribute must be
@@ -633,7 +638,7 @@ DECLARED_VARIABLES{ D::dosingTarget Y::observation }
   }
 ```
    
-### Assignment to multiple variables using `“define = < … >”`
+### Assignment to multiple variables using `define = < … >` {#defineAssignment}
 
 In the case of mapping data values to ***multiple*** variables depending
 on the values of another variable, the syntax is as follows
@@ -744,7 +749,7 @@ Note that no delimiter is required between variables defined in the
 
 **In the current MDL, variable names mapped across MDL Objects must
 match e.g. if we declare variable Y in the Data Object, then this will
-be linked to the Model Object OBSERVATION block variable Y**.
+be linked to the Model Object [`OBSERVATION`] block variable Y**.
 
 ## `DATA_DERIVED_VARIABLES`
 

@@ -1,0 +1,134 @@
+# Changelog
+
+## v1.0 - 19 August 2016
+
+* Public release of MDL, PharmML, DDMoRe Interoperability Framework 
+Standalone Execution Environment (SEE)
+
+* MDL v1.0
+[MDL User Guide for public release](https://drive.google.com/file/d/0B7IApcUw89-edkZwMlNZRU5EWjQ/view?usp=sharing)
+
+The MDL Documented in the MDL User Guide hosted on Github is the latest
+release (currently v1.0) but the documentation has been updated where 
+necessary. The version linked above is a snapshot of documentation 
+for the IMI DDMoRe project deliverable at the close of the project.
+
+* PharmML v0.8.1
+
+### Scope
+The primary focus of MDL in this release is translation to valid
+PharmML, rather than conversion to target software. The previous release
+was primarily concerned with demonstrating interoperability across key
+software targets. In this version of MDL there may be MDL features which
+are not supported in conversion from PharmML to certain target software,
+but which are valid for model description and which generate valid
+PharmML. The aim is to widen the scope of models which can be encoded in
+MDL and generate PharmML for uploading to the DDMoRe repository and for
+future interoperability. Translation of these models to target software
+will follow with updates to the interoperability framework converters.
+
+The changes to MDL since draft 7 (v0.7) enable integration of the Prior
+and Design Objects and improved validation of MDL giving increased
+confidence in generation of valid PharmML. In order to facilitate this,
+certain changes to syntax have been made that are ***NOT*** backwards
+compatible. This is regrettable since it means that existing models
+required changes. We do not make these changes lightly.
+
+### CHANGES v0.7 to v1.0
+The follow are **critical** changes which 
+***break backward compatibility*** with v0.7:  
+  
+#### [Data Object]  
+* [`DECLARED_VARIABLES`] block must now have type assigned to variables
+to enable validation of variable types between MDL objects, particularly
+Design Object variables.
+
+#### [Parameter Object]
+- Correlations and covariances between parameters are now specified in
+the Model Object and must be named parameters. This is to facilitate
+specification of priors on these parameters.
+
+- Users should not specify the type of variability definition 
+(`type is sd`, `type is var`, `type is corr`,
+`type is cov`) for [`VARIABILITY`] parameters.The
+variability, covariance or correlation type is specified and used in the
+[`RANDOM_VARIABLE_DEFINITION`] block in the [Model Object]
+where these parameters are defined.
+
+#### [Model Object]
+* Left hand side transformations for [`INDIVIDUAL_PARAMETERS`] are no
+longer valid. These were felt to be confusing.
+
+* Right hand side functions for [`INDIVIDUAL_PARAMETERS`] and
+[`OBSERVATION`] definitions are now list definitions with the matching
+type to the function. This, combined with conditional statements allows
+more flexibility in parameter and [`OBSERVATION`] definitions.
+
+* Non-continuous outcomes (binary, count, categorical) must be defined
+as RANDOM_VARIABLE_DEFINITION(level=DV){ … } and then the variable
+defined assigned as an anonymous list in the [`OBSERVATION`] block. This is
+to ensure that outcome variables are always defined with variability at
+the DV level. (This is implicit in continuous outcomes due to definition
+of residual error at the DV level).
+
+* Arbitrary equations defining the outcome variable are not allowed in
+the [`OBSERVATION`] block. Use “type is userDefined” instead.
+
+### NEW FEATURES in v1.0
+
+#### General
+* Support for vectors and matrices
+
+* Support for conditional assignment to lists.
+
+#### [Data Object] 
+* Support for model input variables passed from the Data Object with
+“use is variable”. This equates to “regressor” type inputs to
+models.
+
+* Support for [`DATA_DERIVED_VARIABLES`] where dose amounts and dose
+times can be derived from data columns which are being used otherwise as
+`use is amt` or `use is idv`.
+
+#### [Parameter Object]
+No new features. See changes section above.
+
+#### [Model Object] 
+* Support for definition of parameters in
+[`RANDOM_VARIABLE_DEFINITION`] i.e. definition of 
+CL ~ Normal(mean=POP_CL, sd=PPV_CL) for subsequent use in
+[`INDIVIDUAL_PARAMETERS`]. This combined with support for ProbOnto
+definitions allows the user to define multivariate distributions of
+parameters, mixture distributions etc.
+
+* Support for ProbOnto distributions in
+[`RANDOM_VARIABLE_DEFINITION`].
+
+* Support for combination of compartment definitions with differential
+equations.
+
+* Support for userDefined specification of the relationship between
+model predictions and residual error random variables in the
+[`OBSERVATION`] block.
+
+#### [Task Properties object]
+* Support for target software specific [Task Properties object].
+
+#### [MOG Object]
+* Support for specifying problem statement and model name in the [`INFO`] block.
+
+#### [Prior Object]
+The [Prior Object] is a new block for v1.0
+
+#### [Design Object]
+The [Design Object] is a new block for v1.0
+
+## v0.7 - 11 December 2015
+
+* First public release of MDL
+
+* MDL v0.7
+[MDL User Guide](https://drive.google.com/file/d/0B7IApcUw89-eOGxVeFkyNWg5SEU/view?usp=sharing)
+
+* PharmML v0.6
+

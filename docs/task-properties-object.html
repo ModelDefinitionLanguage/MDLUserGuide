@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="preface.html">
+<link rel="prev" href="model-object.html">
+<link rel="next" href="prior-object.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -240,23 +240,126 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<!--bookdown:title:end-->
-<!--bookdown:title:start-->
-<div id="mdl-user-guide-and-reference-manual" class="section level1 unnumbered">
-<h1>MDL User Guide and Reference Manual</h1>
-<p><img src="images/ddmore_logo4.jpg" width="70%" /></p>
-<p><strong>Author: MDL Development Team</strong></p>
-<p><strong>MDL Version 1.0</strong></p>
-<p>2017-01-06</p>
+<div id="task-properties-object" class="section level1">
+<h1><span class="header-section-number">5</span> Task Properties Object</h1>
+<p>The Task Properties Object is intended to convey information to specific target software related to algorithms, settings, options for performing a given task. Some Task Properties Object settings are generic (apply across different target software) but most are specific to the intended target software.</p>
+<p>Task properties are specific to the task e.g. <a href="task-properties-object.html#estimate"><code>ESTIMATE</code></a>, <code>SIMULATE</code>, <code>OPTIMISE</code>, <code>EVALUATE</code>. <a href="task-properties-object.html#target_settings"><code>TARGET_SETTINGS</code></a> are specific to a given target software tool. If the user intends to estimate with a given tool but no <a href="task-properties-object.html#estimate"><code>ESTIMATE</code></a> block is given in the Task Properties Object and/or if the task properties are not specified for the intended tool, then default settings are used.</p>
+<div id="intended-use-of-task-properties" class="section level2">
+<h2><span class="header-section-number">5.1</span> Intended use of Task Properties</h2>
+<p>The user should provide information about settings and options for each target software that they wish to use for a given (estimation) task. These settings and options might be specified to ensure reproducibility of results regardless of target software i.e. to ensure that the results from a given target software are comparable with results from different target software.</p>
+<p>Alternatively, the user may wish to provide settings and options that they will frequently use with a given target software – so that every time they estimate with a given target they use the same settings.</p>
+<p>The modularity of MDL allows the user to preset or reuse Task Properties objects between models. The user may then have preferred Task Properties for estimation that can be called upon during the relevant points in their M &amp; S workflow.</p>
+<p>As with other MDL blocks, it is possible to specify multiple Task Properties blocks within a single .mdl file and then reference only the one required for use with a specific task in either the MOG Object or via R. This allows the user to specify preferred settings for multiple target software tools – facilitating reproducibility and reuse. Even though many Task Properties Objects can be given in an .mdl file, the MOG Object should contain only ONE Task Properties Object.</p>
+</div>
+<div id="why-use-task-properties-for-settings-and-options-rather-than-arguments-of-functions-in-the-ddmore-r-package" class="section level2">
+<h2><span class="header-section-number">5.2</span> Why use Task Properties for settings and options rather than arguments of functions in the ddmore R package?</h2>
+<p>Task Properties are distinct from arguments to the ddmore R package functions for executing tasks – the former passes information to the appropriate target software about the particular settings and options required for a given task. The ddmore function arguments are equivalent to the command line settings or options which are employed when invoking target software.</p>
+<p>For example, we may use Task Properties to define the estimation algorithm and associated settings with NONMEM, but define command line options for PsN which govern how NONMEM should be called by PsN.</p>
+</div>
+<div id="how-are-task-properties-used-by-mdl-and-pharmml" class="section level2">
+<h2><span class="header-section-number">5.3</span> How are Task Properties used by MDL and PharmML?</h2>
+<p>The Task Properties generic items are parsed and understood by the MDL editor within the MDL-IDE. However target software specific settings and options are not parsed by the MDL-IDE – these are passed as is via the PharmML to the target software converter where they are interpreted and converted where they may appear in target software code, external settings or options files as appropriate.</p>
+</div>
+<div id="estimate" class="section level2">
+<h2><span class="header-section-number">5.4</span> <code>ESTIMATE</code></h2>
+<p>The syntax for this block is:</p>
+<pre><code>set algo is &lt; foce | focei | saem | mcmc &gt;</code></pre>
+<div id="target_settings" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> <code>TARGET_SETTINGS</code></h3>
+<p>The <a href="task-properties-object.html#target_settings"><code>TARGET_SETTINGS</code></a> block holds specific settings for the given target software. These settings may be given in name – value pairs within the <code>TARGET_SETTINGS</code> block, or they may be specified in an external file.</p>
+<p>MDL does not check whether the specified options within the <a href="task-properties-object.html#target_settings"><code>TARGET_SETTINGS</code></a> block are appropriate for a given tool. This is performed by the converter for the target tool. See the MDL Reference section for a list of which options are available for each target software.</p>
+<p>The syntax for the <a href="task-properties-object.html#target_settings"><code>TARGET_SETTINGS</code></a> block is:</p>
+<pre><code>TARGET_SETTINGS(target=”NONMEM” | “MONOLIX” | “BUGS” | “PFIM”,
+      settingsFile = “&lt; filename &gt;”){
+set &lt; target specific setting name &gt; = &lt; target specific setting value &gt;,
+    &lt; target specific setting name &gt; = &lt; target specific setting value &gt;,
+    …
+  }</code></pre>
+<p>Note the comma separation between elements of the set statement.</p>
+<p>For example (UseCase1_1):</p>
+<pre><code>SAEM_task = taskObj {
+  ESTIMATE{
+    set algo is saem
+      TARGET_SETTINGS(target=&quot;NONMEM&quot;){
+      # Statements from the NONMEM control stream
+      # $EST METHOD=SAEM INTERACTION NBURN=3000 NITER=500 PRINT=100 SEED=1556678 ISAMPLE=2
+      # $COV MATRIX=R PRINT=E UNCONDITIONAL SIGL=12
+      
+      # Equivalent MDL statements
+      set INTER=true, NBURN=3000, NITER=500, PRINT=100, SEED=1556678, ISAMPLE=2,
+          COV_=true, COV_MATRIX=&quot;R&quot;, COV_PRINT=&quot;E&quot;, COV_UNCONDITIONAL=true, COV_SIGL=12
+      } # end of TARGET_SETTINGS
+      
+      TARGET_SETTINGS(target=&quot;MONOLIX&quot;, settingsFile=[&quot;tables.xmlx&quot;]){
+          set graphicsSettings=&quot;tables.xmlx&quot;
+        } # end of TARGET_SETTINGS
+   } # end of ESTIMATE statement
+} # end of Task Object
 
+BUGS_task = taskObj{
+  ESTIMATE{
+    set algo is mcmc
+    TARGET_SETTINGS(target=&quot;BUGS&quot;){
+      set nchains = 1, # Number of MCMC chains
+      burnin = 1000, # Number of MCMC Burn-in iterations
+      niter = 5000, # Number of iterations
+      parameters = &quot;V,CL,KA,TLAG&quot;, # Parameters to monitor
+      odesolver=&quot;LSODA&quot;, # or &quot;RK45&quot;
+      winbugsgui =&quot;false&quot; # or &quot;true&quot;
+      } # end of TARGET_SETTINGS
+  } # end of ESTIMATE statement
+} # end of Task Object
+
+FOCEI_task= taskObj {
+  ESTIMATE{
+    set algo is focei
+      TARGET_SETTINGS(target=&quot;NONMEM&quot;){
+      # Statements from NONMEM control stream
+      # $EST METHOD=COND INTERACTION MAXEVAL=9999 NSIG=3 SIGL=10 PRINT=5 NOABORT NOPRIOR=1 FILE=example1.ext
+      # $COV MATRIX=R PRINT=E UNCONDITIONAL SIGL=12
+      
+      # Equivalent MDL
+      set INTER=true, MAXEVAL=9999, NSIG=3, SIGL=10, PRINT=5, NOABORT=true,
+      NOPRIOR=1, FILE=&quot;example1.ext&quot;, 
+      COV_MATRIX=&quot;R&quot;, COV_PRINT=&quot;E&quot;, COV_UNCONDITIONAL=true, COV_SIGL=12,
+      MSFO_FILE=&quot;MSFO.msf&quot;
+      } # end of TARGET_SETTINGS
+    } # end of ESTIMATE statement
+} # end of task object</code></pre>
+<p>For BUGS, the following properties are valid (as shown above):</p>
+<pre><code>nchains = &lt;integer&gt;
+niter = &lt;integer&gt;
+parameters = &lt;comma-separated character string of parameter names&gt;
+odesolver = &lt;”LSODA” | “RK45”&gt;
+winbugsgui = &lt;”true” | “false”&gt;</code></pre>
+<p>For NONMEM, the following rules are used in the <a href="task-properties-object.html#target_settings"><code>TARGET_SETTINGS</code></a> block:</p>
+<ul>
+<li>Individual properties influence only <code>$EST</code> statement or the <code>$COV</code><br />
+</li>
+<li>Properties starting with the string <code>COV_</code> will be added to the <code>$COV</code> statement using the following rules:
+<ul>
+<li>The string <code>COV_</code> will be removed from the property<br />
+</li>
+<li>If the remainder of the property is a string/integer assignment, it will be added as a parameter on the <code>$COV</code> statement verbatim (with any unnecessary quotes removed)<br />
+</li>
+<li>If the remainder of the property is a boolean assignment resolving to true, just the parameter name will be added on the <code>$COV</code> statement verbatim<br />
+</li>
+</ul></li>
+<li>If there are any <code>COV_</code> properties present, then a <code>$COV</code> statement will be generated. Otherwise it will not be generated<br />
+</li>
+<li>Any property starting with a string that is not <code>COV_</code> will be added to the <code>$EST</code> statement using the same string/integer/boolean rules as for <code>$COV</code>.</li>
+</ul>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="preface.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="model-object.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="prior-object.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -284,7 +387,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ModelDefinitionLanguage/MDLUserGuide/blob/master/index.Rmd",
+"link": "https://github.com/ModelDefinitionLanguage/MDLUserGuide/blob/master/06-TaskPropertiesObject.Rmd",
 "text": "Edit"
 },
 "download": ["MDL_UserGuide_and_ReferenceManual.pdf", "MDL_UserGuide_and_ReferenceManual.epub"],

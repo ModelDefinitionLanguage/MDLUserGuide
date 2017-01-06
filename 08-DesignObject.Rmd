@@ -1,4 +1,4 @@
-# The Design Object
+# Design Object
 
 ## Design Object overview
 

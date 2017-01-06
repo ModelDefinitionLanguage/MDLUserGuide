@@ -32,8 +32,8 @@ will result in code which can be readily converted to all target tools.
 
 These interoperability constructs will be highlighted in the subsequent
 sections, but users should pay particular attention to sections on the
-use of GROUP_VARIABLES, INDIVIDUAL_VARIABLES and the
-MODEL_PREDICTION.
+use of [`GROUP_VARIABLES`], [`INDIVIDUAL_VARIABLES`] and the
+[`MODEL_PREDICTION`].
 
 ## Dataset conventions
 
@@ -44,25 +44,25 @@ for target software.
     ASCII comma-delimited text file (.csv).
 
 -   The data file should have a header row with names matching those in
-    the **DATA_INPUT_VARIABLES** block.
+    the [`DATA_INPUT_VARIABLES`] block.
 
 -   Data values should be numeric.
 
--   Data columns with string or date:time values should have “use is
-    ignore” for MDL.
+-   Data columns with string or date:time values should have `use is
+    ignore` for MDL.
 
--   Null or missing values should be denoted by “.”.
+-   Null or missing values should be denoted by `.`.
 
 Generally speaking, MDL follows NONMEM dataset conventions.
 
 In addition the following restrictions should be observed for
 interoperability reasons:
 
--   A column with “use is id” is mandatory. Values should be positive,
+-   A column with `use is id` is mandatory. Values should be positive,
     non-zero integer, unique and contiguous.
 
--   A column with “use is idv” is mandatory. Values should be positive,
-    real. When the model is expressed using **DEQ** or **COMPARTMENTS**
+-   A column with `use is idv` is mandatory. Values should be positive,
+    real. When the model is expressed using [`DEQ`] or [`COMPARTMENTS`]
     block the values must be monotonic increasing within ID. This
     constraint does not apply to analytical models. The first idv value
     is taken as the initial time for the model. The initial value does
@@ -70,62 +70,62 @@ interoperability reasons:
     lower than that of the first individual. date:time format is not
     supported for time.
 
--   A column with “use is dv” is mandatory. This column can be any real
+-   A column with `use is dv` is mandatory. This column can be any real
     value. This must have a null value for dosing records.
 
--   When modelling multiple outcomes a column with “use is dvid” is
+-   When modelling multiple outcomes a column with `use is dvid` is
     required. Values should be positive, integer. Values should not be
-    null for observation records.
+    null for [`OBSERVATION`] records.
 
--   A column with “use is mdv” is optional. Valid values are 0
-    (observed),1 (missing). When the observation is null or missing this
+-   A column with `use is mdv` is optional. Valid values are 0
+    (observed),1 (missing). When the [`OBSERVATION`] is null or missing this
     column should have the value 1. It can take the value 1 when
-    observations are present if this observation is to be ignored.
+    [`OBSERVATION`]s are present if this [`OBSERVATION`] is to be ignored.
 
--   A column with “use is evid” is optional. Valid values are 0
-    (observation record), 1 (dosing record), 4 (reset and dose record).
+-   A column with `use is evid` is optional. Valid values are 0
+    ([`OBSERVATION`] record), 1 (dosing record), 4 (reset and dose record).
 
--   A column with “use is amt” is optional. For dosing records this
+-   A column with `use is amt` is optional. For dosing records this
     column must be have positive, real value.
 
--   A column with “use is rate” is optional. This column must have
+-   A column with `use is rate` is optional. This column must have
     positive, real values. This column can only be used in combination
-    with a column with “use is amt”. If the value is zero then a bolus
+    with a column with `use is amt`. If the value is zero then a bolus
     dose is assumed.
 
--   A column with “use is addl” is optional. This column must have
+-   A column with `use is addl` is optional. This column must have
     positive, real values. This column can only be used in combination
-    with columns with “use is amt” and “use is ii”.
+    with columns with `use is amt` and `use is ii`.
 
--   A column with “use is ii” is optional. This column must have
+-   A column with `use is ii` is optional. This column must have
     positive, real values. This column can only be used in combination
-    with columns with “use is amt” and “use is addl” or “use is ss”.
+    with columns with `use is amt` and `use is addl` or `use is ss`.
 
--   A column with “use is ss” is optional. Valid values are 0 (not at
+-   A column with `use is ss` is optional. Valid values are 0 (not at
     steady state), 1 (at steady state). This column can only be used in
-    combination with columns with “use is amt” and “use is ii”.
+    combination with columns with `use is amt` and `use is ii`.
 
--   A column with “use is cmt” is optional unless there is more than one
+-   A column with `use is cmt` is optional unless there is more than one
     route of administration. This column must have positive, integer
     values. Values in this column should start at 1 and correspond to
-    the order of ODEs specified in the **DEQ** block of the Model
+    the order of ODEs specified in the [`DEQ`] block of the Model
     Object.
 
--   Columns with “use is covariate”, “use is catCov” and “use is
-    variable” are optional. These columns must not have missing values.
-    Columns with “use is catCov” must have integer values. Covariate
-    names in the **DATA_INPUT_VARIABLES** block must match the same
+-   Columns with `use is covariate`, `use is catCov` and `use is
+    variable` are optional. These columns must not have missing values.
+    Columns with `use is catCov` must have integer values. Covariate
+    names in the [`DATA_INPUT_VARIABLES`] block must match the same
     name (including matching case) as the header name in the source file
     .csv. Please see sections 2.2.5, 4.3 and 4.9 for details on the use
-    of these variables. If the column has “use is covariate” or “use is
-    catCov” but this variable is not declared in the **COVARIATES**
-    block of the Model Object then it will be “dropped” and ignored.
+    of these variables. If the column has `use is covariate` or `use is catCov` 
+    but this variable is not declared in the [`COVARIATES`]
+    block of the Model Object then it will be `dropped` and ignored.
 
--   Columns with “use is catCov” can only have values 0,1. This implies
-    that categorical covariates with k values should be converted to k-1
+-   Columns with `use is catCov` can only have values 0,1. This implies
+    that categorical [`COVARIATES`] with k values should be converted to k-1
     indicator variables.
 
--   A column with “use is varLevel” is optional. This column should not
+-   A column with `use is varLevel` is optional. This column should not
     have missing values. Columns with this type should not have an
     underscore in the column name. The change in value of this variable
     denotes when to sample new values of the random variable.
@@ -133,53 +133,53 @@ interoperability reasons:
 ## Multiple uses of dataset columns
 
 Dataset columns cannot have multiple uses defined in
-**DATA_INPUT_VARIABLES**. The **DATA_DERIVED_VARIABLES** block can
+[`DATA_INPUT_VARIABLES`]. The [`DATA_DERIVED_VARIABLES`] block can
 be used to specify additional uses for dataset variables. In the current
-MDL, scope for using **DATA_DERIVED_VARIABLES** is limited.
+MDL, scope for using [`DATA_DERIVED_VARIABLES`] is limited.
 
 For example, if the user wants to specify different outcomes /
-observations conditional on a dataset variable like CMT, i.e. using CMT
+[`OBSERVATION`]s conditional on a dataset variable like CMT, i.e. using CMT
 as DVID then they will need to create a dataset variable DVID mapping
 into CMT values appropriately.
 
 ## Defining constants in the model 
 
 For interoperability, constant values in the model should be defined as
-STUCTURAL_PARAMETERS and fixed to a value in the Parameter Object.
+[`STUCTURAL_PARAMETERS`] and fixed to a value in the Parameter Object.
 
-For models expressed as systems of differential equations (**DEQ**
+For models expressed as systems of differential equations ([`DEQ`]
 block), model parameters can be set to constant values in the
-**MODEL_PREDICTION** block, but this may be inefficient in the target
+[`MODEL_PREDICTION`] block, but this may be inefficient in the target
 software translation.
 
 In the current SEE, to ensure interoperability, model parameters should
-not be assigned a constant value in the **GROUP_VARIABLES** or
-**INDIVIDUAL_VARIABLES** block.
+not be assigned a constant value in the [`GROUP_VARIABLES`] or
+[`INDIVIDUAL_VARIABLES`] block.
 
-## Interoperability in the MODEL_PREDICTION block
+## Interoperability in the [`MODEL_PREDICTION`] block
 
 To ensure Monolix interoperability, any variable used in the
-MODEL_PREDICTION block must be either:
+[`MODEL_PREDICTION`] block must be either:
 
 • the independent variable
 
-• defined in MODEL_PREDICTION
+• defined in [`MODEL_PREDICTION`]
 
-• declared in INDIVIDUAL_VARIABLES using {type is linear, … }
+• declared in [`INDIVIDUAL_VARIABLES`] using {type is linear, … }
 
-• defined as “use is variable” in the DATA_INPUT_VARIABLES block of
+• defined as `use is variable` in the [`DATA_INPUT_VARIABLES`] block of
 the Data Object
 
-This implies in particular that STRUCTURAL_PARAMETERS,
-VARIABILITY_PARAMETERS, GROUP_VARIABLES and random variables defined
-in RANDOM_VARIABLES_DEFINITION cannot be used in MODEL_PREDICTION.
+This implies in particular that [`STRUCTURAL_PARAMETERS`],
+[`VARIABILITY_PARAMETERS`], [`GROUP_VARIABLES`] and random variables defined
+in [`RANDOM_VARIABLE_DEFINITION`] cannot be used in [`MODEL_PREDICTION`].
 
-## Interoperability in the OBSERVATION block
+## Interoperability in the [`OBSERVATION`] block
 ---------------------
 
-For Monolix interoperability, different observations / outcomes must not
-share VARIABILITY_PARAMETERS and RANDOM_VARIABLE_DEFINITIONS.
+For Monolix interoperability, different [`OBSERVATION`]s / outcomes must not
+share [`VARIABILITY_PARAMETERS`] and [`RANDOM_VARIABLE_DEFINITION`].
 
-For interoperability with Monolix, the residual error(s) σ^2^~ij~ must
+For interoperability with Monolix, the residual error(s) $\sigma_{i,j}^{2}$ must
 be Normal(0,1) random variables.
 
