@@ -1,13 +1,13 @@
 # Model Object
 
-The Model Object within the MDL is intended to describe the mathematical
+The [Model Object] within the MDL is intended to describe the mathematical
 and statistical properties of the model. MDL defines language elements
 that allow the user to code a wide variety of models and in a variety of
 ways. The Model Object is intended to specify the model independent of
 the target software which will be used for the task (estimation or
 simulation). The same model should be able to be used for a variety of
 tasks – estimation, simulation or optimal design without recoding. The
-Model Object should also be independent of the data – where possible we
+[Model Object] should also be independent of the data – where possible we
 use enumerated types for categorical covariates and outcomes so that
 definition of the model is clear to any user regardless of the data used
 in a given task.
@@ -18,10 +18,10 @@ any target software. The user is free to define any model, however they
 must also be aware that the specified model may not be useable with all
 target software.
 
-As stated in the Introduction, the Model Object is intended to convey
+As stated in the Introduction, the [Model Object] is intended to convey
 the mathematical and statistical definitions required to completely
 define the model. MDL used in defining the model is intended more as a
-descriptive language rather than a programmatic one. The Model Object is
+descriptive language rather than a programmatic one. The [Model Object] is
 used in tasks by combining it with Data, Parameter and Task Properties
 objects, and defining tasks within the R script.
 
@@ -31,7 +31,7 @@ Currently defined blocks are [`IDV`], [`COVARIATES`], [`POPULATION_PARAMETERS`],
 [`RANDOM_VARIABLE_DEFINITION`], [`INDIVIDUAL_VARIABLES`] ,
 [`MODEL_PREDICTION`], [`DEQ`], [`COMPARTMENT`], [`OBSERVATION`].
 
-Which blocks within the Model Object are used for a particular model
+Which blocks within the [Model Object] are used for a particular model
 depends on the structure of that model. Blocks should not be left empty
 (although this is not a syntax error). It is good practice to structure
 and write the model to facilitate readability and understanding of the
@@ -43,20 +43,20 @@ observation level.
 
 In the current version of MDL, the variable names and parameter names in
 the [`STRUCTURAL_PARAMETERS`] and [`VARIABILITY_PARAMETERS`] blocks of
-the Model Object must be matched to those in the Data and Parameter
-objects. The MOG Object brings together the Data, Parameter, Model and
+the [Model Object] must be matched to those in the Data and Parameter
+objects. The [MOG Object] brings together the Data, Parameter, Model and
 Task Properties Objects to perform tasks, and at this stage it is
 assumed that the variable names match across objects.
 
-The independence of the Data Object from the model means that the data
-referenced by the Data Object may be easily used with a different model
-without modification of the Data Object. Similarly, the independence of
-the Parameter Object from the model means that all the parameters
+The independence of the [Data Object] from the model means that the data
+referenced by the [Data Object] may be easily used with a different model
+without modification of the [Data Object]. Similarly, the independence of
+the [Parameter Object] from the model means that all the parameters
 related to modelling project e.g. describing a particular drug, may be
 stored in one place. Note that parameters defined in the Parameter
 Object must have unique names.
 
-Unlike other MDL Objects, the Model Object does not use a
+Unlike other MDL Objects, the [Model Object] does not use a
 [`DECLARED_VARIABLES`] block. Instead variables are declared when they
 are used within the [`IDV`], [`COVARIATES`], [`STRUCTURAL_PARAMETERS`],
 [`VARIABILITY_PARAMETERS`] blocks. Particular care may be required for
@@ -107,7 +107,7 @@ for given inputs.
 
 The [`IDV`] block defines the independent variable within the model.
 Typically this is TIME (or T for differential equations). An [`IDV`]
-block must be present in the Model Object.
+block must be present in the [Model Object].
 
 The syntax is a simple variable declaration:
   
@@ -123,7 +123,7 @@ the `GROUP_VARIABLES,` [`INDIVIDUAL_VARIABLES`] and
 of covariates in the [`MODEL_PREDICTION`] block). Covariates listed in
 the [`COVARIATES`] block must be specified as `use is covariate`
 or `use is catCov` in the `DATA_INPUT_VARIABLES` block in
-the Data Object or defined in the [`POPULATION`] block of the Design
+the [Data Object] or defined in the [`POPULATION`] block of the Design
 Object. Covariate transformations may be specified within this block.
   
 ```
@@ -150,7 +150,7 @@ COVARIATES{
   
 In this example the withCategories prefix to the list of category names
 will be used to link to the values associated with these names in the
-Data Object.
+[Data Object].
 
 The logtWT variable in the [`COVARIATES`] block may be used as the value for
 the cov attribute in the linear function in the [`INDIVIDUAL_VARIABLES`]
@@ -307,7 +307,7 @@ extensibility for the future while retaining backwards compatibility.
 
 When estimating model parameters using observed data, the
 `DATA_INPUT_VARIABLE` with `use is id` is the default “reference level 
-of the model hierarchy [@Gelman2006]. When using a Design Object, the reference 
+of the model hierarchy [@Gelman2006]. When using a [Design Object], the reference 
 level of the model hierarchy is likely to be implicit (subjects in a study arm) 
 rather than explicit. Thus the need to specify `reference = ID`.
 
@@ -357,7 +357,7 @@ MDL within the [`GROUP_VARIABLES`] block.
 
 However, to ensure interoperability within the current SEE, constant
 values in the model should be defined as `STUCTURAL_PARAMETERS` and fixed
-to a value in the Parameter Object.
+to a value in the [Parameter Object].
 
 For models expressed as systems of differential equations ([`DEQ`] block),
 model variables can be set to constant values in the [`MODEL_PREDICTION`]
@@ -426,10 +426,10 @@ To specify correlation or covariance between parameters, the user should
 specify either pairwise correlation or covariance between random
 variables or use a multivariate distribution. In contrast to the
 previous version of MDL where correlations and covariances were defined
-only in the Parameter Object, this version requires the user to specify
+only in the [Parameter Object], this version requires the user to specify
 correlations and covariances in the [`RANDOM_VARIABLE_DEFINITION`]
-block. This is to allow the Prior Object to define priors on parameters
-used in the Model Object.
+block. This is to allow the [Prior Object] to define priors on parameters
+used in the [Model Object].
 
 The following syntax is used to define correlation or covariance:
   
@@ -529,7 +529,7 @@ RANDOM_VARIABLE_DEFINITION(level=OCC){
 Note that in the above example blocks, ID, DV and OCC are declared as
 valid identifiers for the variability hierarchy through the
 [`VARIABILITY_LEVELS`] block assuming appropriate specification within
-the Data Object of `DATA_INPUT_VARIABLES` with `use is id`,
+the [Data Object] of [`DATA_INPUT_VARIABLES`] with `use is id`,
 `use is varLevel` and `use is dv` for ID, OCC and DV
 (respectively).
   
@@ -665,7 +665,7 @@ Using this construct for individual variables equates to the MU
 referencing approach in NONMEM and the standard definition of individual
 parameters in Monolix.
 
-As discussed in the documentation of the Data Object defining covariates
+As discussed in the documentation of the [Data Object] defining covariates
 (section 3.3.5.1) certain constraints are placed on the type of
 covariate used in this form of specification. When covariates are
 defined within the Model Object [`COVARIATES`] block and used in the
@@ -955,7 +955,7 @@ block must be either:
 *   defined in [`MODEL_PREDICTION`]
 *   declared in INDIVIDUAL_VARIABLES using {type is linear, … }
 *   defined as “use is variable in the DATA_INPUT_VARIABLES block
-    of the Data Object
+    of the [Data Object]
 
 This implies in particular that [`STRUCTURAL_PARAMETERS`],
 [`VARIABILITY_PARAMETERS`], [`GROUP_VARIABLES`] and random variables defined

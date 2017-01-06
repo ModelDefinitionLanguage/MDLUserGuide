@@ -21,9 +21,9 @@ into independent objects rather than combining these in a single file
 objects which define each component of the model and related modelling
 task. This independence means that model objects stored in the DDMoRe
 Model Repository may be combined with user objects outside the
-repository e.g. a Model Object, Parameter Object and a Task Properties
-Object may be taken from the Repository and combined with user defined
-Data Object. This may be useful when a user wishes to assess whether a
+repository e.g. a [Model Object], [Parameter Object] and a {Task Properties
+Object} may be taken from the Repository and combined with user defined
+[Data Object]. This may be useful when a user wishes to assess whether a
 library model is predictive for their dataset, as a preliminary step
 before further model refinement.
 
@@ -70,7 +70,7 @@ understanding of any tool-specific tricks and techniques that allow
 the model to work in the original software?
 
 MDL provides a user interface to describe models using a common language
-standard. The aim is that the user writes the model (Model Object) once,
+standard. The aim is that the user writes the model ([Model Object]) once,
 in MDL, then uses this model in the tools they require (and have
 available) in order to complete their M&S tasks, without any tool
 specific recoding. This interoperability is a core deliverable of the
@@ -150,50 +150,50 @@ data and task properties. An additional object is used to specify the
 group of objects required for a given task which is known as the
 Modelling Objects Group (MOG).
 
-The Model Object is the core element of the MDL and Modelling Objects
+The [Model Object] is the core element of the MDL and Modelling Objects
 Group (MOG). It defines the mathematical and statistical properties of
 the model by defining the structural, covariate, variability and
 observation models. While other objects may change depending on task,
-the Model Object will typically be unchanged for tasks associated with
+the [Model Object] will typically be unchanged for tasks associated with
 that model e.g. data visualisation, parameter estimation, model
 diagnostics, prediction, simulation or optimal design.
 
-The Data Object describes the source of the data and the attributes of
+The [Data Object] describes the source of the data and the attributes of
 each of the data variables. It allows the user to define the inputs to
 the model and how these inputs and observed data are to be used in
 definition of the model. It may also be used with data visualisation
 tools without a Model Object.
 
-The Design Object defines the design parameters interventions,
+The [Design Object] defines the design parameters interventions,
 sampling schedules, covariate distributions, populations, study arms -
 for optimal design or design evaluation, and also for simulation. The
 Design Object replaces the Data Object in these cases.
 
-The Parameter Object provides values for structural and variability
+The [Parameter Object] provides values for structural and variability
 parameters, including bounds on the parameter values for use in
 estimation. These can be fixed or initial values with associated
 constraints for parameter estimation or an instantiation of model
 parameters for use in making predictions or simulations.
 
-The Prior Object defines prior distributions and values of the
+The [Prior Object] defines prior distributions and values of the
 parameters when performing Bayesian estimation of parameters. It
 replaces the Parameter Object in this case.
 
-The Task Properties Object contains settings specific to the task which
+The [Task Properties Object] contains settings specific to the task which
 will be passed on to the target software e.g. when estimating parameters
 it will define the estimation algorithm and associated settings for the
 algorithm.
 
 It is through combination of the Model Object with other objects that we
-instantiate the model - linking inputs and observations from the Data or
-Design Object, parameter values from the Parameter or Design Object and
+instantiate the model - linking inputs and observations from the [Data Object] or
+[Design Object], parameter values from the [Parameter Object] or [Design Object] and
 information about the task settings in the Task Properties Object with
-the Model Object to form a Modelling Objects Group (MOG) ready for
+the [Model Object] to form a Modelling Objects Group (MOG) ready for
 executing a modelling, simulation or optimal design task.
 
 Objects are defined and stored in a MDL file with extension .mdl. It is
 possible to define more than one Model, Data, Design, Parameter Prior
-and Task Properties Object within a single MDL file. The MOG Object
+and [Task Properties Object] within a single MDL file. The [MOG Object]
 defines specific individual objects within an MDL file for a given task.
 Most commonly there will be one object of each type of information in a
 MDL file used for a task.
@@ -207,13 +207,13 @@ concept that the elements of the Modelling Object Group (data,
 parameters, model, task properties) are distinct and independent,
 allowing the user to combine new data and parameters applicable to their
 situation with an existing model. Within a M&S task workflow it is easy
-to see how the core Model Object remains unchanged between estimating
+to see how the core [Model Object] remains unchanged between estimating
 parameters, performing model diagnostics, making predictions and
 simulation future outcomes. The fact that the elements of the MDL are
 exchangeable also makes it easier to see exactly what elements change
 between these M & S workflow steps.
 
-Independence of objects also means that the Model Object should be
+Independence of objects also means that the [Model Object] should be
 independent of the data and, as a consequence, more easy to read and
 interpret without needing to have the data to hand. Having an
 independent Task Properties Object means that the user may store their
@@ -226,7 +226,7 @@ object in isolation. Variables from another MDL object must be declared
 in the object in which they are referred to e.g. if we need to refer to
 the Model Object [`OBSERVATION`] block variable Y in the Data Object
 [`DATA_INPUT_VARIABLES`] block then we must 
-declare a matching variable Y in the Data Object.
+declare a matching variable Y in the [Data Object].
 
 ## Task Execution with the ddmore R package
 
@@ -236,7 +236,7 @@ tasks on the MDL file. The R functions can read and parse MDL objects
 from a MDL file to create R object representations of MDL, which can
 then be manipulated within R. These representations of the MDL objects
 can be combined to form a MOG and then written back to a new MDL file.
-This means that an MDL file can contain the core Model Object and
+This means that an MDL file can contain the core [Model Object] and
 associated Data, Design, Parameter, Prior and multiple Task Properties
 Objects which can then be combined into MOGs ready to perform specific
 tasks. This aids reproducibility since with one MDL file, data set and
@@ -244,7 +244,7 @@ associated R script the user can perform multiple steps in a
 pharmacometric workflow for a given model.
 
 Estimation using the estimate function takes as input the user specified
-MDL file or a MOG object defined within R. Additional functions allow
+MDL file or a [MOG Object] defined within R. Additional functions allow
 the user to call modelling tools such as Perl speaks NONMEM (PsN) [8].
 Each task produces a Standard Output (SO) object in R which may be the
 final output or used in subsequent tasks using functions from the ddmore
@@ -263,13 +263,13 @@ The ddmore R package will extend and enhance what the analyst can do
 with existing R packages through the common standards that the DDMoRe
 project brings.
 
-Task properties and settings defined in the Task Properties Object of
+Task properties and settings defined in the [Task Properties Object] of
 MDL are distinct from arguments to the R functions for executing tasks.
-The Task Properties Object provides information to the appropriate
+The [Task Properties Object] provides information to the appropriate
 target software about the particular settings and options required for a
 given task. The R function arguments are command line settings or
-options which are employed when invoking the target software. The Task
-Properties Object may define the estimation algorithm and associated
+options which are employed when invoking the target software. The [Task
+Properties Object] may define the estimation algorithm and associated
 settings for NONMEM, but the command line options for PsN provided from
 the ddmore functions govern how NONMEM should be called by PsN. For
 example, Task Properties specifies an ESTIMATION block with estimation

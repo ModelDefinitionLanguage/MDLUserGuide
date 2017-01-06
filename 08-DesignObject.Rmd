@@ -2,7 +2,7 @@
 
 ## Design Object overview
 
-The Design Object is intended to provide information for creating
+The [Design Object] is intended to provide information for creating
 simulation or evaluation of trial designs, and design space information
 required for optimal design. For trial simulation or design evaluation,
 the trial design is fixed and should be completely defined. For optimal
@@ -90,8 +90,8 @@ intervention schedules to form more complex dosing regimens.
 }
 ```
   
-The `reset` type is used to reset the dosing variable in the Model
-Object at a given time.
+The `reset` type is used to reset the dosing variable in the [Model
+Object] at a given time.
   
 ```
 <name> : {type is resetAll}
@@ -248,10 +248,10 @@ offset `winPK` and `winPD`.
 
 The [`POPULATION`] block initialises and defines population
 characteristics or distributions for use in defining covariate
-distributions within the Model Object `COVARIATES` block. The
-[`POPULATION`] block acts like a `COVARIATES` block for the Design
+distributions within the Model Object [`COVARIATES`] block. The
+[`POPULATION`] block acts like a [`COVARIATES`] block for the Design
 Object, where the user defines covariate distributions and how these may
-differ for each study arm. The `COVARIATES` block in the Model Object
+differ for each study arm. The [`COVARIATES`] block in the [Model Object]
 defines how (observed) covariates are used in the model.
 
 The syntax for the [`POPULATION`] block is: 
@@ -283,9 +283,9 @@ following syntax:
 ```
    
 Note that covariates defined in the [`POPULATION`] block should be
-declared in a [`DECLARED_VARIABLES`] block within the Design Object.
+declared in a [`DECLARED_VARIABLES`] block within the [Design Object].
 
-For example, for the Design Object to be used with UseCase5 which uses
+For example, for the [Design Object] to be used with UseCase5 which uses
 WT, SEX and AGE as covariates (UseCase5_design2_opt.mdl): 
    
 ```
@@ -598,7 +598,7 @@ defined by assignment <name> = <value> or by equation <name> =
 <equation>.
 
 Variables defined in [`DESIGN_PARAMETERS`] can be used in definition of
-covariate distributions defined in Design Object blocks.
+covariate distributions defined in [Design Object] blocks.
 
 Recall the example above where the distribution of covariates was
 defined in the [`POPULATION`] block:

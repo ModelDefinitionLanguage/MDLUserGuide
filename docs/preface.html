@@ -86,10 +86,10 @@
 <li class="chapter" data-level="2.2.2" data-path="data-object.html"><a href="data-object.html#defining-the-independent-variable"><i class="fa fa-check"></i><b>2.2.2</b> Defining the independent variable</a></li>
 <li class="chapter" data-level="2.2.3" data-path="data-object.html"><a href="data-object.html#defining-the-dependent-variable"><i class="fa fa-check"></i><b>2.2.3</b> Defining the dependent variable</a></li>
 <li class="chapter" data-level="2.2.4" data-path="data-object.html"><a href="data-object.html#mapping-data-variables-to-model-variability-levels"><i class="fa fa-check"></i><b>2.2.4</b> Mapping data variables to model variability levels</a></li>
-<li class="chapter" data-level="2.2.5" data-path="data-object.html"><a href="data-object.html#spandefining-covariates"><i class="fa fa-check"></i><b>2.2.5</b> span&gt;Defining covariates</a></li>
+<li class="chapter" data-level="2.2.5" data-path="data-object.html"><a href="data-object.html#defining-covariates"><i class="fa fa-check"></i><b>2.2.5</b> Defining covariates</a></li>
 <li class="chapter" data-level="2.2.6" data-path="data-object.html"><a href="data-object.html#defining-model-inputs-or-time-varying-covariates"><i class="fa fa-check"></i><b>2.2.6</b> Defining model inputs or time-varying covariates</a></li>
-<li class="chapter" data-level="2.2.7" data-path="data-object.html"><a href="data-object.html#assignment-to-a-single-variable-using-variable-name"><i class="fa fa-check"></i><b>2.2.7</b> Assignment to a single variable using <code>variable = &lt;NAME&gt;</code></a></li>
-<li class="chapter" data-level="2.2.8" data-path="data-object.html"><a href="data-object.html#assignment-to-multiple-variables-using-define"><i class="fa fa-check"></i><b>2.2.8</b> Assignment to multiple variables using <code>“define = &lt; … &gt;”</code></a></li>
+<li class="chapter" data-level="2.2.7" data-path="data-object.html"><a href="data-object.html#assignment-to-a-single-variable-using-variable"><i class="fa fa-check"></i><b>2.2.7</b> Assignment to a single variable using <code>variable</code></a></li>
+<li class="chapter" data-level="2.2.8" data-path="data-object.html"><a href="data-object.html#assignment-to-multiple-variables-using-define"><i class="fa fa-check"></i><b>2.2.8</b> Assignment to multiple variables using <code>define</code></a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="data-object.html"><a href="data-object.html#source"><i class="fa fa-check"></i><b>2.3</b> <code>SOURCE</code></a></li>
 <li class="chapter" data-level="2.4" data-path="data-object.html"><a href="data-object.html#declared_variables"><i class="fa fa-check"></i><b>2.4</b> <code>DECLARED_VARIABLES</code></a></li>
@@ -211,8 +211,8 @@
 <li class="chapter" data-level="10.2" data-path="interoperability-guide.html"><a href="interoperability-guide.html#dataset-conventions"><i class="fa fa-check"></i><b>10.2</b> Dataset conventions</a></li>
 <li class="chapter" data-level="10.3" data-path="interoperability-guide.html"><a href="interoperability-guide.html#multiple-uses-of-dataset-columns"><i class="fa fa-check"></i><b>10.3</b> Multiple uses of dataset columns</a></li>
 <li class="chapter" data-level="10.4" data-path="interoperability-guide.html"><a href="interoperability-guide.html#defining-constants-in-the-model"><i class="fa fa-check"></i><b>10.4</b> Defining constants in the model</a></li>
-<li class="chapter" data-level="10.5" data-path="interoperability-guide.html"><a href="interoperability-guide.html#interoperability-in-the-model_prediction-block"><i class="fa fa-check"></i><b>10.5</b> Interoperability in the MODEL_PREDICTION block</a></li>
-<li class="chapter" data-level="10.6" data-path="interoperability-guide.html"><a href="interoperability-guide.html#interoperability-in-the-observation-block"><i class="fa fa-check"></i><b>10.6</b> ## Interoperability in the OBSERVATION block</a></li>
+<li class="chapter" data-level="10.5" data-path="interoperability-guide.html"><a href="interoperability-guide.html#interoperability-in-the-model_prediction-block"><i class="fa fa-check"></i><b>10.5</b> Interoperability in the <a href="model-object.html#model_prediction"><code>MODEL_PREDICTION</code></a> block</a></li>
+<li class="chapter" data-level="10.6" data-path="interoperability-guide.html"><a href="interoperability-guide.html#interoperability-in-the-observation-block"><i class="fa fa-check"></i><b>10.6</b> ## Interoperability in the <a href="model-object.html#observation"><code>OBSERVATION</code></a> block</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i><b>11</b> Changelog</a><ul>
 <li class="chapter" data-level="11.1" data-path="changelog.html"><a href="changelog.html#v1.0---19-august-2016"><i class="fa fa-check"></i><b>11.1</b> v1.0 - 19 August 2016</a><ul>
@@ -222,7 +222,8 @@
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="changelog.html"><a href="changelog.html#v0.7---11-december-2015"><i class="fa fa-check"></i><b>11.2</b> v0.7 - 11 December 2015</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="12" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>12</b> References</a></li>
+<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
       </nav>
@@ -341,7 +342,7 @@ gitbook.start({
 "link": "https://github.com/ModelDefinitionLanguage/MDLUserGuide/blob/master/01_Preface.Rmd",
 "text": "Edit"
 },
-"download": ["MDL_UserGuide_and_ReferenceManual.pdf", "MDL_UserGuide_and_ReferenceManual.epub"],
+"download": ["_main.pdf", "_main.epub"],
 "toc": {
 "collapse": "subsection",
 "scroll_highlight": true

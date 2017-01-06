@@ -1,8 +1,8 @@
 # Task Properties Object
 
-The Task Properties Object is intended to convey information to specific
+The [Task Properties Object] is intended to convey information to specific
 target software related to algorithms, settings, options for performing
-a given task. Some Task Properties Object settings are generic
+a given task. Some [Task Properties Object] settings are generic
 (apply across different target software) but most are specific to the
 intended target software.
 
@@ -10,7 +10,7 @@ Task properties are specific to the task e.g. [`ESTIMATE`],
 `SIMULATE`, `OPTIMISE`, `EVALUATE`. [`TARGET_SETTINGS`] are
 specific to a given target software tool. If the user intends to
 estimate with a given tool but no [`ESTIMATE`] block is given in the
-Task Properties Object and/or if the task properties are not specified
+[Task Properties Object] and/or if the task properties are not specified
 for the intended tool, then default settings are used.
 
 ## Intended use of Task Properties
@@ -33,11 +33,11 @@ their M & S workflow.
 
 As with other MDL blocks, it is possible to specify multiple Task
 Properties blocks within a single .mdl file and then reference only the
-one required for use with a specific task in either the MOG Object or
+one required for use with a specific task in either the [MOG Object] or
 via R. This allows the user to specify preferred settings for multiple
 target software tools – facilitating reproducibility and reuse. Even
-though many Task Properties Objects can be given in an .mdl file, the
-MOG Object should contain only ONE Task Properties Object.
+though many [Task Properties Object] can be given in an .mdl file, the
+[MOG Object] should contain only ONE [Task Properties Object].
 
 ## Why use Task Properties for settings and options rather than arguments of functions in the ddmore R package?
 

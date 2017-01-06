@@ -18,7 +18,6 @@ output:
         family: sans
         size: 2
   bookdown::pdf_book:  
-    book_filename: "MDL User Guide and Reference Manual v1.pdf"
 documentclass: book
 bibliography: "references.bib"
 biblio-style: "apalike"

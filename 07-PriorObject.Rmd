@@ -1,17 +1,17 @@
 # Prior Object
 
-For Bayesian estimation, the user must specify a Prior Object, which is
-used in place of the Parameter Object. The Prior Object defines prior
+For Bayesian estimation, the user must specify a [Prior Object], which is
+used in place of the Parameter Object. The [Prior Object] defines prior
 distributions or values for all model parameters – both structural and
 variability. The prior distributions form an additional level of model
 hierarchy above all other levels of variability in the model. This level
 of the hierarchy does not need to be explicitly defined in the Model
-Object `VARIABILITY_LEVELS` block. it is implied through use of the
-Prior Object.
+Object [`VARIABILITY_LEVELS`] block. it is implied through use of the
+[Prior Object].
 
 ## Prior distributions vs initial values vs fixed values
 
-At present we do not support translation of the Prior Object to NONMEM
+At present we do not support translation of the [Prior Object] to NONMEM
 prior specification for use with the \$BAYES estimation algorithm. The
 only supported Bayesian estimation tool currently is WinBUGS. While
 NONMEM accepts a mix of prior distribution specification and initial
@@ -80,7 +80,7 @@ PRIOR_PARAMETERS{
  
 In the [`PRIOR_VARIABLE_DEFINITION`] block we set up the prior
 distributions for the `STRUCTURAL` and `VARIABILITY` parameters of
-the Model Object. All model parameters must have a prior distribution
+the [Model Object]. All model parameters must have a prior distribution
 specified, or a constant value set.
 
 If model parameters are correlated or have a multivariate distribution
@@ -273,7 +273,7 @@ distribution.
 
 ### `PRIOR_SOURCE`
 
-Similarly to the `SOURCE` block within the Data Object, the
+Similarly to the `SOURCE` block within the [Data Object], the
 [`PRIOR_SOURCE`] block is a named list providing the file name, format
 of the source data. However the [`PRIOR_SOURCE`] block adds an argument
 to the list to provide a vector of column names to be used in the data

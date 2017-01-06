@@ -49,13 +49,13 @@ file) that are to be used in defining the Modelling Objects Group for
 use in the desired task. The MDL-IDE checks that these named objects
 exist in the current file.
 
-The MDL-IDE also uses the MOG Object to “tie together” variable
+The MDL-IDE also uses the [MOG Object] to “tie together” variable
 definitions across objects – it checks that variables used in the model
 are defined. So for example, if the model expects a covariate called
-logtWT but this is not defined in the Data Object then an error is
-given. Without a MOG Object, no validation check of this type is
-possible. Without the MOG Object, the MDL-IDE can only perform
-rudimentary syntax checking of MDL statements. With the MOG Object
+logtWT but this is not defined in the [Data Object] then an error is
+given. Without a [MOG Object], no validation check of this type is
+possible. Without the [MOG Object], the MDL-IDE can only perform
+rudimentary syntax checking of MDL statements. With the [MOG Object]
 defined the MDL-IDE can check that the resulting model will result in
 valid PharmML.
 
@@ -66,12 +66,12 @@ The syntax for statements in this block is :
 designObj | mdlObj | parObj | priorObj | taskObj>}
 ```
    
-Note that in the MOG Object, the user must specify dataObj *OR*
+Note that in the [MOG Object], the user must specify dataObj *OR*
 designObj; parObj **OR** priorObj. As stated previously,
-for simulation, design evaluation or optimisation the Design Object
-takes the place of the Data Object. Similarly for estimation with BUGS
-or other Bayesian estimation software the Prior Object takes the place
-of the Parameter Object.
+for simulation, design evaluation or optimisation the [Design Object]
+takes the place of the [Data Object]. Similarly for estimation with BUGS
+or other Bayesian estimation software the [Prior Object] takes the place
+of the [Parameter Object].
 
 For example (UseCase1.mdl):
    
