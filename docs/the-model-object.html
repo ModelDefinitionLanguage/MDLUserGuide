@@ -8,7 +8,7 @@
   <title></title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="">
-  <meta name="generator" content="bookdown 0.2 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
 
   <meta property="og:title" content="" />
   <meta property="og:type" content="book" />
@@ -200,9 +200,10 @@
 <li class="chapter" data-level="9.4" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#mdl-reference-guide"><i class="fa fa-check"></i><b>9.4</b> MDL Reference Guide</a><ul>
 <li class="chapter" data-level="9.4.1" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#how-to-read-the-mdl-reference-guide."><i class="fa fa-check"></i><b>9.4.1</b> How to read the MDL Reference Guide.</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#blocks-1"><i class="fa fa-check"></i><b>9.5</b> Blocks</a><ul>
-<li class="chapter" data-level="9.5.1" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#functions-2"><i class="fa fa-check"></i><b>9.5.1</b> Functions</a></li>
-<li class="chapter" data-level="9.5.2" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#distributions"><i class="fa fa-check"></i><b>9.5.2</b> Distributions</a></li>
+<li class="chapter" data-level="9.5" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#objects-2"><i class="fa fa-check"></i><b>9.5</b> Objects</a></li>
+<li class="chapter" data-level="9.6" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#blocks-1"><i class="fa fa-check"></i><b>9.6</b> Blocks</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#functions-2"><i class="fa fa-check"></i><b>9.6.1</b> Functions</a></li>
+<li class="chapter" data-level="9.6.2" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#distributions"><i class="fa fa-check"></i><b>9.6.2</b> Distributions</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="interoperability-guide.html"><a href="interoperability-guide.html"><i class="fa fa-check"></i><b>10</b> Interoperability Guide</a><ul>
@@ -338,7 +339,7 @@
  }</code></pre>
 <p>Additional levels of variability are easily implemented by incrementing <code>level = &lt;number&gt;</code> with an associated DATA_INPUT_VARIABLE with <code>use is varLevel</code>. This facilitates definition of levels such as between trial random variability.</p>
 <p>The distinction between <code>type is observation</code> and <code>type is parameter</code> will be used further in future versions of MDL to describe models where there are additional levels of hierarchy. For example, when describing differences between trials as a random effect or modelling population level differences; and at the observation level e.g. replicates of PD measurements at each time point, or multiple assays of a single sample. Specifying variability type allows extensibility for the future while retaining backwards compatibility.</p>
-<p>When estimating model parameters using observed data, the <code>DATA_INPUT_VARIABLE</code> with <code>use is id</code> is the default “reference level of the model hierarchy[^13]. When using a Design Object, the reference level of the model hierarchy is likely to be implicit (subjects in a study arm) rather than explicit. Thus the need to specify <code>reference = ID</code>.</p>
+<p>When estimating model parameters using observed data, the <code>DATA_INPUT_VARIABLE</code> with <code>use is id</code> is the default “reference level of the model hierarchy <span class="citation">(Gelman <a href="#ref-Gelman2006">2006</a>)</span>. When using a Design Object, the reference level of the model hierarchy is likely to be implicit (subjects in a study arm) rather than explicit. Thus the need to specify <code>reference = ID</code>.</p>
 </div>
 <div id="group_variables" class="section level2">
 <h2><span class="header-section-number">4.7</span> <code>GROUP_VARIABLES</code></h2>
@@ -369,7 +370,7 @@
 <pre><code>RANDOM_VARIABLE_DEFINITION( level = &lt;VARIABILITY_LEVEL variable&gt; ){
   &lt;VARIABLE NAME &gt; ~ &lt;Distribution with arguments&gt;
  }</code></pre>
-<p>The <a href="the-model-object.html#random_variable_definition"><code>RANDOM_VARIABLE_DEFINITION</code></a> block supports probability distributions as specified in the ProbOnto[^14] knowledge base[^15]. Typically for definition of structural parameter and residual error random variability, Normal distributions will be used. The MDL distribution “Normal(…) maps to either ProbOnto Normal1 or Normal2 depending on the parameterisation:</p>
+<p>The <a href="the-model-object.html#random_variable_definition"><code>RANDOM_VARIABLE_DEFINITION</code></a> block supports probability distributions as specified in the ProbOnto knowledge base <span class="citation">(M. J. Swat, Grenon, and Wimalaratne <a href="#ref-Swat_2016">2016</a>)</span>. Typically for definition of structural parameter and residual error random variability, Normal distributions will be used. The MDL distribution “Normal(…) maps to either ProbOnto Normal1 or Normal2 depending on the parameterisation:</p>
 <table>
 <thead>
 <tr class="header">
@@ -1329,7 +1330,7 @@ DATA_INPUT_VARIABLES {
 <p>In most “population approach models, the individuals are assumed to be drawn from a population, the characterstics of which are described through fixed and random effect models. Inferences are then made on the “population parameters which we take to be representative of the population from which the individuals are drawn.</p>
 <p>In meta-analysis across many studies, regions, demographic populations it may be useful to characterise additional levels of hierarchy characterising how individuals within each study, region or demographic differ systematically (through fixed effect models) and randomly (through variability models). These higher level models can be expressed in the <a href="the-model-object.html#population_parameters"><code>POPULATION_PARAMETERS</code></a> block.</p>
 <p>In the current MDL, population models are defined through combination of <a href="the-model-object.html#random_variable_definition"><code>RANDOM_VARIABLE_DEFINITION</code></a> and <a href="the-model-object.html#population_parameters"><code>POPULATION_PARAMETERS</code></a> definitions. In the current MDL expressions (equations) are NOT allowed in the <a href="the-model-object.html#population_parameters"><code>POPULATION_PARAMETERS</code></a> block.</p>
-<p>The <a href="the-model-object.html#population_parameters"><code>POPULATION_PARAMETERS</code></a> block uses random variables defined in the RANDOM_VARIABLE_DEFINITION block. The syntax for the <a href="the-model-object.html#population_parameters"><code>POPULATION_PARAMETERS</code></a> block is as follows:</p>
+<p>The <a href="the-model-object.html#population_parameters"><code>POPULATION_PARAMETERS</code></a> block uses random variables defined in the <a href="the-model-object.html#random_variable_definition"><code>RANDOM_VARIABLE_DEFINITION</code></a> block. The syntax for the <a href="the-model-object.html#population_parameters"><code>POPULATION_PARAMETERS</code></a> block is as follows:</p>
 <pre><code>POPULATION_PARAMETERS{
   :: {type is &lt; continuous | categorical &gt;, 
       variable = &lt; RANDOM_VARIABLE_DEFINITION variable &gt; }
@@ -1363,6 +1364,15 @@ MODEL_PREDICTION {
 
 </div>
 </div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Gelman2006">
+<p>Gelman, Andrew. 2006. “Prior Distributions for Variance Parameters in Hierarchical Models(Comment on Article by Browne and Draper).” <em>Bayesian Analysis</em> 1. Institute of Mathematical Statistics: 515–34. doi:<a href="https://doi.org/10.1214/06-ba117a">10.1214/06-ba117a</a>.</p>
+</div>
+<div id="ref-Swat_2016">
+<p>Swat, Maciej J., Pierre Grenon, and Sarala Wimalaratne. 2016. “ProbOnto: Ontology and Knowledge Base of Probability Distributions.” <em>Bioinformatics</em> 32 (17). Oxford University Press (OUP): 2719–21. doi:<a href="https://doi.org/10.1093/bioinformatics/btw170">10.1093/bioinformatics/btw170</a>.</p>
+</div>
+</div>
             </section>
 
           </div>
@@ -1382,6 +1392,7 @@ MODEL_PREDICTION {
 require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
+"github": false,
 "facebook": true,
 "twitter": true,
 "google": false,

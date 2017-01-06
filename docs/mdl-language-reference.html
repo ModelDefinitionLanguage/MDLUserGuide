@@ -8,7 +8,7 @@
   <title></title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="">
-  <meta name="generator" content="bookdown 0.2 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
 
   <meta property="og:title" content="" />
   <meta property="og:type" content="book" />
@@ -200,9 +200,10 @@
 <li class="chapter" data-level="9.4" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#mdl-reference-guide"><i class="fa fa-check"></i><b>9.4</b> MDL Reference Guide</a><ul>
 <li class="chapter" data-level="9.4.1" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#how-to-read-the-mdl-reference-guide."><i class="fa fa-check"></i><b>9.4.1</b> How to read the MDL Reference Guide.</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#blocks-1"><i class="fa fa-check"></i><b>9.5</b> Blocks</a><ul>
-<li class="chapter" data-level="9.5.1" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#functions-2"><i class="fa fa-check"></i><b>9.5.1</b> Functions</a></li>
-<li class="chapter" data-level="9.5.2" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#distributions"><i class="fa fa-check"></i><b>9.5.2</b> Distributions</a></li>
+<li class="chapter" data-level="9.5" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#objects-2"><i class="fa fa-check"></i><b>9.5</b> Objects</a></li>
+<li class="chapter" data-level="9.6" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#blocks-1"><i class="fa fa-check"></i><b>9.6</b> Blocks</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#functions-2"><i class="fa fa-check"></i><b>9.6.1</b> Functions</a></li>
+<li class="chapter" data-level="9.6.2" data-path="mdl-language-reference.html"><a href="mdl-language-reference.html#distributions"><i class="fa fa-check"></i><b>9.6.2</b> Distributions</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="interoperability-guide.html"><a href="interoperability-guide.html"><i class="fa fa-check"></i><b>10</b> Interoperability Guide</a><ul>
@@ -1184,7 +1185,7 @@ G = [[ “A”, “B”; “C”, “D”]] # matrix of strings</code></pre>
 </div>
 <div id="mdl-reference-guide" class="section level2">
 <h2><span class="header-section-number">9.4</span> MDL Reference Guide</h2>
-<p>Appendix X contains the MDL reference guide. This document gives detail of Object, Block, List, Sublist, Function and Type definitions. As it is based on and generated from the language definition file it documents exactly how the language is constructed and is definitive in describing what is valid MDL as implemented in the MDL-IDE. Elements of the Reference Guide have been extracted here in a format intended to help user understanding which may be used for quick reference.</p>
+<p>The [MDL reference guide is available online] (<a href="https://github.com/ModelDefinitionLanguage/MDLUserGuide/blob/master/mdl_reference.pdf" class="uri">https://github.com/ModelDefinitionLanguage/MDLUserGuide/blob/master/mdl_reference.pdf</a>). This document gives detail of Object, Block, List, Sublist, Function and Type definitions. As it is based on and generated from the language definition file it documents exactly how the language is constructed and is definitive in describing what is valid MDL as implemented in the MDL-IDE. Elements of the Reference Guide have been extracted here in a format intended to help user understanding which may be used for quick reference.</p>
 <div id="how-to-read-the-mdl-reference-guide." class="section level3">
 <h3><span class="header-section-number">9.4.1</span> How to read the MDL Reference Guide.</h3>
 <p>There is a hierarchy in the MDL Reference Guide. This reflects the way that users approach the definition of a model in a sequential fashion. Understanding this hierarchy will help the user identify what statements and attributes are valid as shown here:.</p>
@@ -1221,17 +1222,17 @@ G = [[ “A”, “B”; “C”, “D”]] # matrix of strings</code></pre>
 <ul>
 <li><p>the types and associated type classes.</p></li>
 <li><p>the keyword types and associated enumeration types. e.g. <code>type is combinedError1</code>; <code>set algo is saem</code>.</p></li>
+</ul></li>
 </ul>
-<ol style="list-style-type: decimal">
-<li><h2 id="objects-2"><span class="header-section-number">9.4.1</span> Objects</h2></li>
-</ol></li>
-</ul>
+</div>
+</div>
+<div id="objects-2" class="section level2">
+<h2><span class="header-section-number">9.5</span> Objects</h2>
 <p>Valid types of Objects are:</p>
 <pre><code> dataObj, designObj, parObj, priorObj, mdlObj, taskObj, mogObj</code></pre>
 </div>
-</div>
 <div id="blocks-1" class="section level2">
-<h2><span class="header-section-number">9.5</span> Blocks</h2>
+<h2><span class="header-section-number">9.6</span> Blocks</h2>
 <p>The following blocks are defined for the various MDL Objects:</p>
 <table>
 <thead>
@@ -1425,7 +1426,7 @@ G = [[ “A”, “B”; “C”, “D”]] # matrix of strings</code></pre>
 </tbody>
 </table>
 <div id="functions-2" class="section level3">
-<h3><span class="header-section-number">9.5.1</span> Functions</h3>
+<h3><span class="header-section-number">9.6.1</span> Functions</h3>
 <p>Mathematical functions are provided to support definition of models. The following mathematical functions are defined:</p>
 <p>Statistical functions:</p>
 <pre><code>mean, median, probit, logit, invLogit, invProbit</code></pre>
@@ -1443,7 +1444,7 @@ pchipInterp, splineInterp</code></pre>
 <p>Distributions (see below).</p>
 </div>
 <div id="distributions" class="section level3">
-<h3><span class="header-section-number">9.5.2</span> Distributions</h3>
+<h3><span class="header-section-number">9.6.2</span> Distributions</h3>
 <p>Distributions are denoted using the ~ prefix. The following distributions are defined:</p>
 <table style="width:98%;">
 <colgroup>
@@ -1964,6 +1965,7 @@ pchipInterp, splineInterp</code></pre>
 require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
+"github": false,
 "facebook": true,
 "twitter": true,
 "google": false,

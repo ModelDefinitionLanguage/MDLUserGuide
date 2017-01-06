@@ -307,7 +307,7 @@ extensibility for the future while retaining backwards compatibility.
 
 When estimating model parameters using observed data, the
 `DATA_INPUT_VARIABLE` with `use is id` is the default “reference level 
-of the model hierarchy[^13]. When using a Design Object, the reference 
+of the model hierarchy [@Gelman2006]. When using a Design Object, the reference 
 level of the model hierarchy is likely to be implicit (subjects in a study arm) 
 rather than explicit. Thus the need to specify `reference = ID`.
 
@@ -387,7 +387,7 @@ RANDOM_VARIABLE_DEFINITION( level = <VARIABILITY_LEVEL variable> ){
 ```
   
 The [`RANDOM_VARIABLE_DEFINITION`] block supports probability
-distributions as specified in the ProbOnto[^14] knowledge base[^15].
+distributions as specified in the ProbOnto knowledge base [@Swat_2016].
 Typically for definition of structural parameter and residual error
 random variability, Normal distributions will be used. The MDL
 distribution “Normal(…) maps to either ProbOnto Normal1 or Normal2
@@ -1760,7 +1760,7 @@ definitions. In the current MDL expressions (equations) are NOT allowed
 in the [`POPULATION_PARAMETERS`] block.
 
 The [`POPULATION_PARAMETERS`] block uses random variables defined in the
-RANDOM_VARIABLE_DEFINITION block. The syntax for the
+[`RANDOM_VARIABLE_DEFINITION`] block. The syntax for the
 [`POPULATION_PARAMETERS`] block is as follows:
   
 ```

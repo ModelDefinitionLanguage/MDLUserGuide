@@ -1525,7 +1525,9 @@ does not rely on any other object.
 
 ## MDL Reference Guide
 
-Appendix X contains the MDL reference guide. This document gives detail
+The [MDL reference guide is available online]
+(https://github.com/ModelDefinitionLanguage/MDLUserGuide/blob/master/mdl_reference.pdf). 
+This document gives detail
 of Object, Block, List, Sublist, Function and Type definitions. As it is
 based on and generated from the language definition file it documents
 exactly how the language is constructed and is definitive in describing
@@ -1598,8 +1600,7 @@ and attributes are valid as shown here:.
     -   the keyword types and associated enumeration types. e.g. `type
         is combinedError1`; `set algo is saem`.
 
-    1.  Objects
-        -------
+## Objects
 
 Valid types of Objects are:
 
