@@ -432,7 +432,7 @@ trials this is typically the subject with
 defined as `use is id`.
 
 The level in the hierarchy is defined by a numerical level value in the
-[Model Object]  [`VARIABILITY LEVELS`] block.
+[Model Object][`VARIABILITY LEVELS`] block.
 
 For example (UseCase1):
 
@@ -617,7 +617,7 @@ parameters into a PD model, or a time-varying covariate such as plasma
 concentration or age for use in a maturation model. These variables are 
 sometimes referred to as regressors or model input variables.
 
-These variables are defined in MDL as `use is variable”`.
+These variables are defined in MDL as `use is variable`.
 
 Variables with `use is variable` should not be used with definition
 of [`INDIVIDUAL_VARIABLES`] with `type is linear`.

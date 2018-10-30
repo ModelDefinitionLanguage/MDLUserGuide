@@ -602,8 +602,7 @@ The only way of defining [`INDIVIDUAL_VARIABLES`] that is currently
 supported for parameter estimation across target software is the “linear
 after transformation method described in section 4.9.1 below.
 
-### Mixed effect model with linear fixed effects and normally distributed 
-random effects 
+### Mixed effect model with linear fixed effects and normally distributed random effects 
 
 In some cases it is possible to express the fixed effects of covariates
 for a population parameter as a linear model with normally distributed
@@ -888,13 +887,13 @@ construct.
 In some cases, users may have to consider how their model is constructed
 more carefully. For example, in a pharmacodynamic model:
 
-`PD = PD_BASELINE + PD_BETA\*CP + ETA_PD`
+`PD = PD_BASELINE + PD_BETA*CP + ETA_PD`
 
 It may be tempting to try to write this as a `{type is linear, … }` 
 relationship with CP as a covariate, but recall that covariates may
 not be time-varying, and CP would almost certainly break this rule.
 
-If we encode `GRP_PD = POP_BASELINE + POP_BETA\*CP` as a
+If we encode `GRP_PD = POP_BASELINE + POP_BETA*CP` as a
 `GROUP_VARIABLE` and then add ETA_PD in [`INDIVIDUAL_VARIABLES`] using
 the `{type is general, … }` form then the GRP_PD is also
 time-varying.
@@ -993,7 +992,7 @@ For example:
 ```
 MODEL_PREDICTION {
 DEQ{
- RATEIN = if(T >= TLAG) then GUT \* KA
+ RATEIN = if(T >= TLAG) then GUT * KA
  else 0
  GUT : { deriv =(- RATEIN), init = 0, x0 = 0 }
  CENTRAL : { deriv =(RATEIN - CL \* CENTRAL / V) }
@@ -1214,7 +1213,7 @@ COMPARTMENT{
 }
 
 DEQ{
-  CENTRAL : { deriv =( - CL \* CENTRAL / V), init = 0, x0 = 0 }
+  CENTRAL : { deriv =( - CL * CENTRAL / V), init = 0, x0 = 0 }
   }
 CC = CENTRAL / V
 } # end MODEL_PREDICTION
@@ -1238,8 +1237,8 @@ INPUT_CENTRAL : {type is direct, to = CENTRAL}
 }
 
 DEQ{
-GUT : { deriv =(- GUT \* KA), init = 0, x0 = 0 }
-CENTRAL : { deriv =(GUT \* KA - CL \* CENTRAL / V), init = 0,
+GUT : { deriv =(- GUT * KA), init = 0, x0 = 0 }
+CENTRAL : { deriv =(GUT * KA - CL * CENTRAL / V), init = 0,
 x0 = 0 }
 }
 CC = CENTRAL / V
@@ -1282,7 +1281,7 @@ $$h\left( y_{\text{ij}} \right) = h\left( f\left( x_{\text{ij}},\psi_{i} \right)
 
 Where
 
-$$y_{\text{ij}} = \text{jth}\ \mathrm{\text{observation\ for\ subject}}\ i$$
+$$y_{\text{ij}} = \text{jth}\ \mathrm{\text{observation for subject}}\ i$$
 
 *h* = Transformation of the outcome to ensure that the resulting
 function is an additive function of *f* and *g.* Specfied in MDL error
